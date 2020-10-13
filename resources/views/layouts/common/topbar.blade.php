@@ -13,7 +13,7 @@
             @auth
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3">
-                    <a href="#" class="navbar-brand">Запросы</a>
+                    <a href="{{ route('inquiries.index') }}" class="navbar-brand">Запросы</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>

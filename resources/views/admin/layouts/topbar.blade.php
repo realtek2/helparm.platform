@@ -8,7 +8,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                     <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
                 </li>
                 <li class="nav-item">
