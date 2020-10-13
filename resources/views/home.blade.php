@@ -17,6 +17,7 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+        <h3 class="my-5">Now you can create fund</h3>
         </div>
     </div>
 </div>
