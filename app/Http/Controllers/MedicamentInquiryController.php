@@ -47,7 +47,7 @@ class MedicamentInquiryController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'request_to_all' => 'nullable|boolean',
-            'quntity' => 'required',
+            'quantity' => 'required',
             'category_id' => 'required',
             'fund_id' => 'nullable'
         ]);
@@ -55,7 +55,7 @@ class MedicamentInquiryController extends Controller
         $input = $request->all();
         MedicamentInquiry::create($input);
 
-        return redirect(route('inquiry.index'))->with('success', 'Запрос создан.');
+        return redirect(route('inquiries.index'))->with('success', 'Запрос создан.');
     }
 
     /**

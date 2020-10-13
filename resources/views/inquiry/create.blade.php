@@ -21,7 +21,7 @@
         </div>
     @endif
     
-    <form action="{{ route('funds.store') }}" method="POST">
+    <form action="{{ route('inquiries.store') }}" method="POST">
         @csrf
     
         <div class="col-md-9 p-0">
@@ -52,10 +52,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <label>Тип запроса:*</label>
-                        <select class="custom-select border border-dark rounded-0" required name="category_id">
-                            <option selected>Выберите категорию</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <select class="custom-select border border-dark rounded-0" required name="fund_id">
+                            <option selected>Выберите фонд</option>
+                            @foreach ($funds as $fund)
+                                <option value="{{ $fund->id }}">{{ $fund->name }}</option>
                             @endforeach
                           </select>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <label>Укажите необходимое количество*</label>
-                        <input type="text" name="email" class="form-control border border-dark rounded-0"">
+                        <input type="text" name="quantity" class="form-control border border-dark rounded-0"">
                     </div>
                 </div>
                 <div class="col-auto">

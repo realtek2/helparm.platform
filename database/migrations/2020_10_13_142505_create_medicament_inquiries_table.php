@@ -18,7 +18,7 @@ class CreateMedicamentInquiriesTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('request_to_all')->default(false);
-            $table->integer('quntity');
+            $table->integer('quantity');
 
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('medicament_categories')->onDelete('set null');

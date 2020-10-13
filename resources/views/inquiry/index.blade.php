@@ -29,7 +29,7 @@
                 <th>Количество</th>
                 <th>Категория</th>
                 <th>Дата создания</th>
-                <th width="19%">Action</th>
+                <th>Action</th>
             </tr>
             @foreach ($inquiries as $inquiry)
             <tr>
@@ -38,16 +38,16 @@
                 <td>{{ $inquiry->description ?? ''}}</td>
                 <td>{{ $inquiry->fund->name }}</td>
                 <td>{{ $inquiry->quantity }}</td>
-                <td>{{ $inquiry->medicamentsCategory->name }}</td>
+                <td>{{ $inquiry->medicamentsCategory ?? 'Медикаменты' }}</td>
                 <td>{{ $inquiry->created_at}}</td>
                 <td>
                     <form action="{{ route('inquiries.destroy', $inquiry->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('inquiries.show', $inquiry->id) }}">Открыть запрос</a>
-                        <a class="btn btn-primary" href="{{ route('inquiries.edit', $inquiry->id) }}">Изменить</a>
+                        <a class="btn btn-info disabled" href="{{ route('inquiries.show', $inquiry->id) }}">Открыть запрос</a>
+                        <a class="btn btn-primary disabled" href="{{ route('inquiries.edit', $inquiry->id) }}">Изменить</a>
                         @csrf
                         @method('DELETE')
         
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger disabled">Удалить</button>
                     </form>
                 </td>
             </tr>
