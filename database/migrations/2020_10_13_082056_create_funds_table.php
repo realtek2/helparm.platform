@@ -17,10 +17,11 @@ class CreateFundsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('address')->nullable();
-            $table->string('email')->nullable();
+            $table->string('address');
+            $table->string('number');
+            $table->string('email');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

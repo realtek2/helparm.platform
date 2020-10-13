@@ -26,6 +26,7 @@
                 <th>Имя</th>
                 <th>Описание</th>
                 <th>Адрес</th>
+                <th>Телефон</th>
                 <th>Е-майл</th>
                 <th width="19%">Action</th>
             </tr>
@@ -34,8 +35,9 @@
                 <td>{{ $fund->id }}</td>
                 <td>{{ $fund->name }}</td>
                 <td>{{ $fund->description ?? '-'}}</td>
-                <td>{{ $fund->address ?? '-' }}</td>
-                <td>{{ $fund->email ?? '-' }}</td>
+                <td>{{ $fund->address }}</td>
+                <td>{{ $fund->number }}</td>
+                <td>{{ $fund->email }}</td>
                 <td>
                     <form action="{{ route('funds.destroy', $fund->id) }}" method="POST">
                         <a class="btn btn-primary" href="{{ route('funds.edit', $fund->id) }}">Изменить</a>

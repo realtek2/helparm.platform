@@ -36,10 +36,9 @@ class FundController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate(['name' => 'required']);
-        Fund::create($request->all());
+        Fund::create($this->validateFund());
 
         return redirect(route('funds.index'))->with('success', 'Создан новый фонд.');
     }
@@ -62,10 +61,9 @@ class FundController extends Controller
      * @param  \App\Fund  $fund
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fund $fund)
+    public function update(Fund $fund)
     {
-        $request->validate(['name' => 'required']);
-        $fund->update($request->all());
+        $fund->update($this->validateFund());
 
         return redirect(route('funds.index'))->with('success', 'Фонд обновлён.');
     }
@@ -81,5 +79,16 @@ class FundController extends Controller
         $fund->delete();
 
         return redirect(route('funds.index'))->with('success', 'Фонд удалён.');
+    }
+
+    private function validateFund()
+    {
+        return request()->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'description' => 'nullable',
+            ]);
     }
 }

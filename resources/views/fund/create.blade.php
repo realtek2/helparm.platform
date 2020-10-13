@@ -48,6 +48,12 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Телефон:</strong>
+                    <input type="text" name="number" class="form-control" placeholder="Телеофн">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Е-майл:</strong>
                     <input type="text" name="email" class="form-control" placeholder="Е-майл">
                 </div>
