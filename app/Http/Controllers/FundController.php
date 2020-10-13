@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Fund;
+use App\Models\Fund;
 use Illuminate\Http\Request;
 
 class FundController extends Controller

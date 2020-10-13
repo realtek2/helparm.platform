@@ -17,8 +17,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('home');
     });
-    
     Route::resource('funds', 'FundController', ['except' => ['show']]);
+
+    Route::group(['middleware' => 'is_admin'], function () {
+        Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
+            Route::resource('users', 'UserController', ['except' => ['show']]);
+        });
+    });
 });
 
 Auth::routes();
