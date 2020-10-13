@@ -1,0 +1,16 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Fund extends Model
+{
+    protected $fillable = [
+        'name',
+        'description',
+        'image',
+        'address',
+        'email'
+    ];
+}

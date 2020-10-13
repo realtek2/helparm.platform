@@ -2,7 +2,7 @@
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'helparm.platform') }}</a>
       </nav> --}}
-      <nav class="text-white navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav class="text-white navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -16,7 +16,7 @@
                     <a href="#" class="navbar-brand">Запросы</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="navbar-brand">Фонды</a>
+                    <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
                 </li>
             </ul>
             @endauth
