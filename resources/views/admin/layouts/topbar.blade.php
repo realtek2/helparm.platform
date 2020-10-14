@@ -1,5 +1,5 @@
 <header>
-      <nav class="text-white navbar navbar-expand-sm navbar-dark bg-info mb-4">
+      <nav class="text-white navbar navbar-expand-md navbar-dark bg-info mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -7,21 +7,23 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3">
-                    <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.users.index') }}" class="navbar-brand">Пользователи</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-3">
+                        <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.users.index') }}" class="navbar-brand">Пользователи</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>

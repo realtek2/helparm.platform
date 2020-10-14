@@ -81,7 +81,7 @@ class FundController extends Controller
         return redirect(route('funds.index'))->with('success', 'Фонд удалён.');
     }
 
-    private function validateFund()
+    protected function validateFund()
     {
         return request()->validate([
             'name' => 'required',

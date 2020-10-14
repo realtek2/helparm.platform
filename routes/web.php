@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return view('home');
+        return redirect(route('inquiries.index'));
     });
-    Route::resource('funds', 'FundController', ['except' => ['show']]);
-
     Route::group(['middleware' => 'is_admin'], function () {
         Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
             Route::resource('users', 'UserController', ['except' => ['show']]);
         });
     });
 
+    Route::resource('funds', 'FundController', ['except' => ['show']]);
+
     Route::resource('inquiries', 'MedicamentInquiryController');
 });
-
-Auth::routes();

@@ -41,19 +41,9 @@ class MedicamentInquiryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'nullable',
-            'request_to_all' => 'nullable|boolean',
-            'quantity' => 'required',
-            'category_id' => 'required',
-            'fund_id' => 'nullable'
-        ]);
-
-        $input = $request->all();
-        MedicamentInquiry::create($input);
+        MedicamentInquiry::create($this->validateIquiry());
 
         return redirect(route('inquiries.index'))->with('success', 'Запрос создан.');
     }
@@ -61,23 +51,26 @@ class MedicamentInquiryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MedicamentInquiry  $medicamentInquiry
+     * @param  \App\Models\MedicamentInquiry  $inquiry
      * @return \Illuminate\Http\Response
      */
-    public function show(MedicamentInquiry $medicamentInquiry)
+    public function show(MedicamentInquiry $inquiry)
     {
-        //
+        return view('inquiry.show', compact('inquiry'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MedicamentInquiry  $medicamentInquiry
+     * @param  \App\Models\MedicamentInquiry  $inquiry
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedicamentInquiry $medicamentInquiry)
+    public function edit(MedicamentInquiry $inquiry)
     {
-        //
+        $categories = MedicamentsCategory::all();
+        $funds = Fund::all();
+
+        return view('inquiry.edit', compact('inquiry', 'categories', 'funds'));
     }
 
     /**
@@ -87,9 +80,19 @@ class MedicamentInquiryController extends Controller
      * @param  \App\Models\MedicamentInquiry  $medicamentInquiry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedicamentInquiry $medicamentInquiry)
+    public function update($id, Request $request)
     {
-        //
+        $this->validateIquiry();
+        $input = $request->all();
+        
+        if ($input['request_to_all'] == 1) {
+            $input['fund_id'] = null;
+        }
+
+        $medicamentInquiry = MedicamentInquiry::findOrFail($id);
+        $medicamentInquiry->update($input);
+
+        return redirect(route('inquiries.index'))->with('success', 'Запрос обновлён.');
     }
 
     /**
@@ -98,8 +101,22 @@ class MedicamentInquiryController extends Controller
      * @param  \App\Models\MedicamentInquiry  $medicamentInquiry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MedicamentInquiry $medicamentInquiry)
+    public function destroy($id)
     {
-        //
+        MedicamentInquiry::destroy($id);
+
+        return redirect(route('inquiries.index'))->with('success', 'Запрос удалён.');
+    }
+
+    protected function validateIquiry()
+    {
+        return request()->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'request_to_all' => 'nullable|boolean',
+            'quantity' => 'required',
+            'category_id' => 'required',
+            'fund_id' => 'nullable'
+        ]);
     }
 }

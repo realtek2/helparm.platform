@@ -11,45 +11,47 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             @auth
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3">
-                    <a href="{{ route('inquiries.index') }}" class="navbar-brand">Запросы</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
-                </li>
-            </ul>
-            @endauth
-            <ul class="navbar-nav ml-auto">
-            @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-3">
+                        <a href="{{ route('inquiries.index') }}" class="navbar-brand">Запросы</a>
                     </li>
-                @endif
-            @else
-                <li class="nav-item">
-                    <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="ml-2">|</span>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="navbar-brand" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        Выйти
-                    </a>
+                    <li class="nav-item">
+                        <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
+                    </li>
+                </ul>
+                @endauth
+                <ul class="navbar-nav ml-auto">
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="ml-2">|</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            Выйти
+                        </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-            @endguest
-            </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                @endguest
+                </ul>
+            </div>
         </div>
     </nav>
 </header>

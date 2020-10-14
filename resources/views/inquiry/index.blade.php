@@ -25,7 +25,7 @@
                 <th>ID</th>
                 <th>Имя</th>
                 <th>Описание</th>
-                <th>Тип запроса</th>
+                <th>Фонд</th>
                 <th>Количество</th>
                 <th>Категория</th>
                 <th>Дата создания</th>
@@ -36,18 +36,18 @@
                 <td>ID-{{ $inquiry->id }}</td>
                 <td>{{ $inquiry->name }}</td>
                 <td>{{ $inquiry->description ?? ''}}</td>
-                <td>{{ $inquiry->fund->name }}</td>
+                <td>{{ $inquiry->fund->name ?? 'Всем' }}</td>
                 <td>{{ $inquiry->quantity }}</td>
                 <td>{{ $inquiry->medicamentsCategory ?? 'Медикаменты' }}</td>
                 <td>{{ $inquiry->created_at}}</td>
                 <td>
                     <form action="{{ route('inquiries.destroy', $inquiry->id) }}" method="POST">
                         <a class="btn btn-info disabled" href="{{ route('inquiries.show', $inquiry->id) }}">Открыть запрос</a>
-                        <a class="btn btn-primary disabled" href="{{ route('inquiries.edit', $inquiry->id) }}">Изменить</a>
+                        <a class="btn btn-primary" href="{{ route('inquiries.edit', $inquiry->id) }}">Изменить</a>
                         @csrf
                         @method('DELETE')
         
-                        <button type="submit" class="btn btn-danger disabled">Удалить</button>
+                        <button type="submit" class="btn btn-danger">Удалить</button>
                     </form>
                 </td>
             </tr>
