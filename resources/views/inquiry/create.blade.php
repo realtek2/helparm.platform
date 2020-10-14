@@ -77,10 +77,10 @@
                             <input type="text" name="quantity" class="form-control border border-dark rounded-0"">
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto mt-2">
                             <button type="submit" class="btn btn-success">Создать запрос</button>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto mt-2">
                         <a class="btn" href="{{ route('inquiries.index') }}"> Отмена</a>
                     </div>
                 </div>
