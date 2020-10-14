@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
             Route::resource('users', 'UserController', ['except' => ['show']]);
+            Route::get('/inquiries', 'MedicamentInquiryController@list');
         });
     });
 

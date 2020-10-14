@@ -19,4 +19,5 @@
     <!-- Styles -->
     @yield('custom_css')
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
+    <script src="https://kit.fontawesome.com/43f0528625.js" crossorigin="anonymous"></script>
 </head>

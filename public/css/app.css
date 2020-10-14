@@ -10899,6 +10899,27 @@ a.text-dark:focus {
   }
 }
 
+@media (min-width: 1500px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1440px;
+  }
+}
+
+@media (max-width: 415px) {
+  .page-footer {
+    bottom: -25px !important;
+  }
+}
+
+body {
+  background-color: #fff;
+  font-family: "Arial \41E\431\44B\447\43D\44B\439", Arial, sans-serif;
+}
+
 .page-footer {
   position: fixed;
   left: 0;
@@ -10910,13 +10931,57 @@ a.text-dark:focus {
   width: 100%;
 }
 
-@media (min-width: 1500px) {
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 1440px;
-  }
+.dark {
+  background: #000;
+}
+
+.custom-block {
+  height: 136px;
+  background: inherit;
+  background-color: #f2f2f2;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d7d7d7;
+  border-radius: 6px;
+}
+
+.inquiry-text-color {
+  color: #7f7f7f;
+}
+
+.inquiries-block {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3490196078);
+}
+
+.number_size {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.send-text {
+  color: #E4CC19 !important;
+}
+
+.badge-olives {
+  border-width: 0px;
+  background: inherit;
+  background-color: #70b603;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.btn-olives {
+  border-width: 0px;
+  background: inherit;
+  background-color: #70b603;
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  font-size: 16px;
+  color: #FFFFFF;
 }
 

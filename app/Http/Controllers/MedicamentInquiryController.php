@@ -22,6 +22,14 @@ class MedicamentInquiryController extends Controller
              ->with((request()->input('page', 1) - 1) * 5);
     }
 
+    public function list()
+    {
+        $inquiries = MedicamentInquiry::latest()->paginate(5);
+
+        return view('admin.inquiry.index', compact('inquiries'))
+             ->with((request()->input('page', 1) - 1) * 5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,7 +92,7 @@ class MedicamentInquiryController extends Controller
     {
         $this->validateIquiry();
         $input = $request->all();
-        
+
         if ($input['request_to_all'] == 1) {
             $input['fund_id'] = null;
         }

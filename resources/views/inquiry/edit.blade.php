@@ -84,11 +84,11 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label>Укажите необходимое количество*</label>
-                                <input type="text" name="quantity" value="{{ $inquiry->quantity }}" class="form-control border border-dark rounded-0"">
+                                <input type="text" name="quantity" onkeyup="this.value=this.value.replace(/[^\d]/,'')" value="{{ $inquiry->quantity }}" class="form-control border border-dark rounded-0"">
                             </div>
                         </div>
                         <div class="col-auto mt-2">
-                                <button type="submit" class="btn btn-success">Редактировать запрос</button>
+                                <button type="submit" class="btn btn-olives">Редактировать запрос</button>
                         </div>
                         <div class="col-auto mt-2">
                             <a class="btn" href="{{ route('inquiries.index') }}"> Отмена</a>

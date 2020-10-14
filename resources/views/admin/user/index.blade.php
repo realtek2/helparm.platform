@@ -8,7 +8,7 @@
                     <h2>Пользователи</h2>
                 </div>
                 <div class="pull-right my-4">
-                    <a class="btn btn-success" href="{{ route('admin.users.create') }}">Добавить пользователя</a>
+                    <a class="btn btn-olives" href="{{ route('admin.users.create') }}">Добавить пользователя</a>
                 </div>
             </div>
         </div>

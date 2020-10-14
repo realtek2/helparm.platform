@@ -8,7 +8,7 @@
                     <h2>Фонды</h2>
                 </div>
                 <div class="pull-right my-4">
-                    <a class="btn btn-success" href="{{ route('funds.create') }}">Добавить фонд</a>
+                    <a class="btn btn-olives" href="{{ route('funds.create') }}">Добавить фонд</a>
                 </div>
             </div>
         </div>

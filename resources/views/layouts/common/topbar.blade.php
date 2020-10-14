@@ -2,7 +2,7 @@
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'helparm.platform') }}</a>
       </nav> --}}
-      <nav class="text-white navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav class="text-white navbar navbar-expand-sm navbar-dark dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -34,15 +34,15 @@
                 @else
                     <li class="nav-item">
                         <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="ml-2">|</span>
+                            <i class="fas fa-user mr-2"></i> {{ Auth::user()->name }} <span class="ml-2">|</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="navbar-brand" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                            Выйти
+                        <a class="navbar-brand" 
+                           href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();"> Выйти
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -1,3 +1,21 @@
+@media (min-width: 1500px) {
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1440px;
+    }
+}
+@media (max-width: 415px){
+    .page-footer{
+        bottom: -25px !important;
+    }
+}
+body{
+    background-color: #fff;
+    font-family: "Arial Обычный", Arial, sans-serif;
+}
 .page-footer{
     position: fixed; 
     left: 0; bottom: 0; 
@@ -7,12 +25,53 @@
     color: #fff; 
     width: 100%; 
 }
-@media (min-width: 1500px) {
-    .container-xl,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container {
-        max-width: 1440px;
-    }
+.dark{
+    background: #000;
+}
+.custom-block{
+    height: 136px;
+    background: inherit;
+    background-color: rgba(242, 242, 242, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(215, 215, 215, 1);
+    border-radius: 6px;
+}
+.inquiry-text-color{
+    color: rgb(127, 127, 127);
+}
+.inquiries-block{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.349019607843137);
+}
+.number_size{
+    font-size: 20px;
+    font-weight: 400;
+}
+.send-text{
+    color: #E4CC19 !important;
+}
+.badge-olives{
+    border-width: 0px;
+    background: inherit;
+    background-color: rgba(112, 182, 3, 1);
+    border: none;
+    border-radius: 3px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #FFFFFF;
+    text-align: center
+}
+.btn-olives{
+    border-width: 0px;
+    background: inherit;
+    background-color: rgba(112, 182, 3, 1);
+    border: none;
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 16px;
+    color: #FFFFFF;
 }

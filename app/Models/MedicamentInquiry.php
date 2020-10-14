@@ -17,7 +17,7 @@ class MedicamentInquiry extends Model
 
     public function medicamentsCategory()
     {
-        return $this->belongsTo(MedicamentsCategory::class);
+        return $this->belongsTo(MedicamentsCategory::class, 'category_id', 'id');
     }
     
     public function fund()
