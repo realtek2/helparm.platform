@@ -13,11 +13,14 @@
             @auth
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mr-3">
+                    <li class="nav-item">
                         <a href="{{ route('inquiries.index') }}" class="navbar-brand">Запросы</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mx-3">
                         <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('products.index') }}" class="navbar-brand">Склад</a>
                     </li>
                 </ul>
                 @endauth

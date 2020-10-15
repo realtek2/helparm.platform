@@ -24,4 +24,9 @@ class MedicamentInquiry extends Model
     {
         return $this->belongsTo(Fund::class);
     }
+    
+    public function answers()
+    {
+        return $this->hasMany(ProductAnswer::class);
+    }
 }

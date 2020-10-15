@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-lg-12">
             <div class="pull-left">
                 <h2>Редактирование пользователя</h2>
             </div>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 margin-tb mb-2">
+        <div class="col-lg-12 mb-2">
             <div class="pull-left">
                 <h1><strong>Редактировать запрос ID-{{ $inquiry->id }}</strong></h1>
             </div>

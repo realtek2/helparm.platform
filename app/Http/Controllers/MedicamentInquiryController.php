@@ -6,6 +6,7 @@ use App\Models\Fund;
 use App\Models\MedicamentInquiry;
 use App\Models\MedicamentsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicamentInquiryController extends Controller
 {
@@ -64,7 +65,9 @@ class MedicamentInquiryController extends Controller
      */
     public function show(MedicamentInquiry $inquiry)
     {
-        return view('inquiry.show', compact('inquiry'));
+        $user = Auth::user();
+        $funds = Fund::all();
+        return view('inquiry.show', compact('inquiry', 'funds', 'user'));
     }
 
     /**

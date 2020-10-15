@@ -2,17 +2,8 @@
 
 @section('content')
     <div class="container">
-        <div class="row align-items-center mb-4">
-            <div class="col-md-12 mx-auto">
-                <div class="card text-center custom-block justify-content-center">
-                    <div>
-                        <p>ЛЕНТА БЫСТРЫХ НОВОСТЕЙ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-lg-12 margin-tb my-3">
+            <div class="col-lg-12 my-3">
                 <div class="float-left">
                     <h1><strong>Запросы</strong></h1>
                 </div>
@@ -47,7 +38,7 @@
                 <td>{{ $inquiry->description ?? ''}}</td>
                 <td>{{ $inquiry->fund->name ?? 'Всем' }}</td>
                 <td>{{ $inquiry->quantity }}</td>
-                <td>{{ $inquiry->medicamentsCategory ?? 'Медикаменты' }}</td>
+                <td>{{ $inquiry->medicamentsCategory->name ?? 'Медикаменты' }}</td>
                 <td>{{ $inquiry->created_at}}</td>
                 <td>
                     <form action="{{ route('inquiries.destroy', $inquiry->id) }}" method="POST">

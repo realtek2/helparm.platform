@@ -13,4 +13,9 @@ class Fund extends Model
         'number',
         'email'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -29,4 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('funds', 'FundController', ['except' => ['show']]);
 
     Route::resource('inquiries', 'MedicamentInquiryController');
+
+    Route::resource('products', 'ProductController');
+
+    Route::post('/inquiries/{inquiryId}/answer/store', 'ProductAnswerController@store')->name('asnwer.store');
 });

@@ -10935,18 +10935,7 @@ body {
   background: #000;
 }
 
-.custom-block {
-  height: 136px;
-  background: inherit;
-  background-color: #f2f2f2;
-  box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #d7d7d7;
-  border-radius: 6px;
-}
-
-.inquiry-text-color {
+.p-text-color {
   color: #7f7f7f;
 }
 
@@ -10983,5 +10972,16 @@ body {
   box-shadow: none;
   font-size: 16px;
   color: #FFFFFF;
+}
+
+.warehouse-table tr:first-child {
+  border-bottom: 2px solid black !important;
+  border-top-width: 0px !important;
+}
+
+.warehouse-table tr:first-child th {
+  color: #7f7f7f !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
 }
 

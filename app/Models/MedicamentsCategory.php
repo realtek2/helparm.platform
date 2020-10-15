@@ -10,4 +10,14 @@ class MedicamentsCategory extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function inquiries()
+    {
+        return $this->hasMany(MedicamentInquiry::class);
+    }
 }
