@@ -16,13 +16,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return redirect(route('inquiries.index'));
-    });
+    Route::get('/', 'HomeController@home');
     Route::group(['middleware' => 'is_admin'], function () {
         Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
             Route::resource('users', 'UserController', ['except' => ['show']]);
+            Route::get('/', 'HomeController@admin');
             Route::get('/inquiries', 'MedicamentInquiryController@list');
+            Route::get('/funds', 'FundController@index')->name('funds.index');
+            Route::get('/warehouses', 'ProductController@index')->name('warehouses.index');
         });
     });
 
@@ -31,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inquiries', 'MedicamentInquiryController');
 
     Route::resource('products', 'ProductController');
+    Route::get('/answer/create', 'ProductController@create')->name('answer.form.create');
+    Route::post('/answer/store', 'ProductController@store')->name('answer.store');
 
     Route::post('/inquiries/{inquiryId}/answer/store', 'ProductAnswerController@store')->name('asnwer.store');
 });

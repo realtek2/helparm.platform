@@ -10,7 +10,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-3">
-                        <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
+                        <a href="{{ route('admin.funds.index') }}" class="navbar-brand">Запросы</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a href="{{ route('admin.funds.index') }}" class="navbar-brand">Фонды</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.warehouses.index') }}" class="navbar-brand">Склад</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.users.index') }}" class="navbar-brand">Пользователи</a>

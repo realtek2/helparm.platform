@@ -1,3 +1,11 @@
+<body>
+    <div class="modal fade" id="remote_modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- content will be filled here from "ajax/modal-content/model-content-1.html" -->
+            </div>
+        </div>
+    </div>
 <header>
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'helparm.platform') }}</a>

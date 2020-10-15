@@ -25,7 +25,8 @@ class ProductAnswerController extends Controller
      */
     public function create()
     {
-        //
+        $products = ProductAnswer::all();
+        return view('inquiry.product_answers.add_modal', compact('products'));
     }
 
     /**
@@ -36,6 +37,12 @@ class ProductAnswerController extends Controller
      */
     public function store($inquiryId, Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'quantity' => 'required',
+            'comment' => 'nullable',
+            'delivery_period' => 'required'
+        ]);
         $inquiry = MedicamentInquiry::findOrFail($inquiryId);
         $input = $request->all();
 

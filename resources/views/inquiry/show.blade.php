@@ -24,9 +24,9 @@
         <hr class="col-md-12">
     </div>
     @if ($inquiry->fund_id == Auth::user()->fund_id)
-        @include('inquiry.list_inquiries', ['inquiry' => $inquiry, 'funds' => $funds])
+        @include('inquiry.product_answers.list_inquiries', ['inquiry' => $inquiry, 'funds' => $funds])
     @else
-        @include('inquiry.add_inquiry')
+        @include('inquiry.product_answers.add_inquiry')
     @endif
 </div>
 @endsection

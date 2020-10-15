@@ -19,7 +19,7 @@ class CreateProductAnswersTable extends Migration
             $table->foreign('inquiry_id')->references('id')->on('medicament_inquiries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->integer('qunatity');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->string('delivery_period');
             $table->timestamps();
         });
