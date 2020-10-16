@@ -24,7 +24,7 @@
         @if ($products->count())
             @include('warehouse.table', ['products' => $products])
         @else
-            <h3>Нет созданных фондов.</h3>
+            <h3>Нет созданных товаров.</h3>
         @endif
 
         {!! $products->links() !!}
