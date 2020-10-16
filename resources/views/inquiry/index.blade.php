@@ -23,12 +23,6 @@
                         <li class="list-inline-item mr-4 p-text-color"><h4>Архив</h4></li>
                     </ul>
                 </div>
-                <div class="float-right">
-                    <ul class="list-inline">
-                        <li class="list-inline-item pull-right mr-5"><h5><i class="fas fa-th-list mr-3"></i>Список</h5></li>
-                        <li class="list-inline-item pull-right p-text-color"><h5><i class="fas fa-th-large mr-3"></i>Плиткой</h5></li>
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -58,7 +52,7 @@
                     <div class="row mt-3 mb-2">
                         <div class="col-md-10">
                             <span class="mr-2 p-text-color">Дата создания:</span><span>{{ $inquiry->created_at }}</span>
-                            <span class="ml-4 p-text-color">Тип запроса:</span><a href="#"> {{ $inquiry->fund->name ?? 'Для всех' }}</a>
+                            <span class="ml-4 p-text-color">Тип запроса:</span><a href="#"> {{ $inquiry->request_to_all == 0 ? $inquiry->fund->name : 'Для всех' }}</a>
                         </div>
                         <div class="col">
                             <span class="float-right">Ответов: 1</span>

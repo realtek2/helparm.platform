@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo(MedicamentsCategory::class, 'category_id', 'id');
     }
+
+    public function productAnswer()
+    {
+        return $this->hasOne(ProductAnswer::class);
+    }
 }

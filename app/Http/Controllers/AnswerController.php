@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\MedicamentInquiry;
 use App\Models\Product;
 use App\Models\ProductAnswer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ProductAnswerController extends Controller
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +28,7 @@ class ProductAnswerController extends Controller
      */
     public function create()
     {
-        $productAnswer = ProductAnswer::all();
-        $products = Product::all();
-        return view('inquiry.product_answers.add_modal', compact('products', 'productAnswer'));
+        //
     }
 
     /**
@@ -40,19 +40,27 @@ class ProductAnswerController extends Controller
     public function store(Request $request, $inquiryId)
     {
         $this->validate($request, [
-            'product_id' => 'required',
             'quantity' => 'required',
             'comment' => 'nullable',
             'delivery_period' => 'required'
         ]);
+        
         $inquiry = MedicamentInquiry::findOrFail($inquiryId);
         $input = $request->all();
         
+        $input['fund_id'] = Auth::user()->fund_id;
         $input['inquiry_id'] = $inquiryId;
+        
         $inquiry = MedicamentInquiry::find($inquiryId);
-        $productAnswer = new ProductAnswer($input);
+        $answer = new Answer($input);
 
-        $inquiry->answers()->save($productAnswer);
+        $inquiry->answers()->save($answer);
+
+        
+        ProductAnswer::updateOrCreate([
+            'product_id' => $request->product_id,
+            'answer_id' => $answer->id,
+        ]);
 
         return redirect(route('inquiries.show', ['inquiry' => $inquiryId]))->with('success', 'Запрос создан.');
     }
@@ -60,10 +68,10 @@ class ProductAnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProductAnswer  $productAnswer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductAnswer $productAnswer)
+    public function show(Answer $answer)
     {
         //
     }
@@ -71,10 +79,10 @@ class ProductAnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProductAnswer  $productAnswer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductAnswer $productAnswer)
+    public function edit(Answer $answer)
     {
         //
     }
@@ -83,10 +91,10 @@ class ProductAnswerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProductAnswer  $productAnswer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductAnswer $productAnswer)
+    public function update(Request $request, Answer $answer)
     {
         //
     }
@@ -94,11 +102,13 @@ class ProductAnswerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProductAnswer  $productAnswer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductAnswer $productAnswer)
+    public function destroy($id)
     {
-        //
+        Answer::destroy($id);
+
+        return redirect(route('home'));
     }
 }

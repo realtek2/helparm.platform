@@ -27,6 +27,6 @@ class MedicamentInquiry extends Model
     
     public function answers()
     {
-        return $this->hasMany(ProductAnswer::class);
+        return $this->hasMany(Answer::class, 'id', 'inquiry_id');
     }
 }

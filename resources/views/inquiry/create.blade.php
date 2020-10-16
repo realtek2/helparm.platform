@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <label>Категория запроса:*</label>
                             <select class="custom-select border border-dark rounded-0" required name="category_id">
-                                <option selected>Выберите категорию</option>
+                                <option selected disabled>Выберите категорию</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach

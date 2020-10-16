@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::where('fund_id', Auth::user()->fund_id)->latest()->paginate(5);
 
         return view('warehouse.index', compact('products'))->with((request()->input('page', 1) - 1) * 5);
     }

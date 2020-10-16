@@ -1,6 +1,6 @@
 <body>
     <div class="modal fade" id="remote_modal" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- content will be filled here from "ajax/modal-content/model-content-1.html" -->
             </div>
@@ -44,7 +44,7 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a class="navbar-brand" href="{{ route('admin.users.edit', ['user' => Auth::user()]) }}">
                             <i class="fas fa-user mr-2"></i> {{ Auth::user()->name }} <span class="ml-2">|</span>
                         </a>
                     </li>

@@ -19,14 +19,18 @@
             <p class="p-text-color">{{ $inquiry->description }}</p>
         </div>
         <div class="col-md-12">
-            <span><strong>Ответов:</strong></span><span class="badge badge-warning">0</span>
+            <span><strong>Ответов:</strong></span><span class="badge badge-warning">{{ $answers->count() ?? '0' }}</span>
         </div>
         <hr class="col-md-12">
     </div>
     @if ($inquiry->fund_id == Auth::user()->fund_id)
-        @include('inquiry.product_answers.list_inquiries', ['inquiry' => $inquiry, 'funds' => $funds])
+        @include('inquiry.product_answers.list_answers')
     @else
-        @include('inquiry.product_answers.add_inquiry')
+        @if(isset($answer_fund_id) && $answer_fund_id == Auth::user()->fund_id)
+            @include('inquiry.product_answers.fund_answers')
+        @else
+            @include('inquiry.product_answers.add_inquiry')
+        @endif
     @endif
 </div>
 @endsection

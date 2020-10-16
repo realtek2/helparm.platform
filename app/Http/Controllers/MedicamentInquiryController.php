@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Fund;
 use App\Models\MedicamentInquiry;
 use App\Models\MedicamentsCategory;
+use App\Models\Product;
+use App\Models\ProductAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +21,7 @@ class MedicamentInquiryController extends Controller
     public function index()
     {
         $inquiries = MedicamentInquiry::latest()->paginate(5);
-
+    
         return view('inquiry.index', compact('inquiries'))
              ->with((request()->input('page', 1) - 1) * 5);
     }
@@ -50,8 +53,12 @@ class MedicamentInquiryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $this->validateIquiry();
+        $input = $request->all();
+        $input['fund_id'] = Auth::user()->fund_id;
+
         MedicamentInquiry::create($this->validateIquiry());
 
         return redirect(route('inquiries.index'))->with('success', 'Запрос создан.');
@@ -65,9 +72,18 @@ class MedicamentInquiryController extends Controller
      */
     public function show(MedicamentInquiry $inquiry)
     {
-        $user = Auth::user();
+        $answer_id = isset(Answer::where('inquiry_id', $inquiry->id)->get()->first()->id) ? Answer::where('inquiry_id', $inquiry->id)->get()->first()->id : null;
+        $answer_fund_id = isset(Answer::find($answer_id)->fund_id) ? Answer::find($answer_id)->fund_id : null;
+
+        $answers = Answer::where('inquiry_id', $inquiry->id)->get();
+
+        $fundAnswers = Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get();
+        $productAnswers = ProductAnswer::where('answer_id', $answer_id)->with(['product'])->get();
+
+        $products = Product::all();
         $funds = Fund::all();
-        return view('inquiry.show', compact('inquiry', 'funds', 'user'));
+
+        return view('inquiry.show', compact('inquiry', 'funds', 'products', 'answer_id', 'answer_fund_id', 'answers', 'fundAnswers', 'productAnswers'));
     }
 
     /**

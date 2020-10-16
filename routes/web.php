@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@home');
+    Route::get('/', 'HomeController@home')->name('home');
     Route::group(['middleware' => 'is_admin'], function () {
         Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
             Route::resource('users', 'UserController', ['except' => ['show']]);
@@ -32,8 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inquiries', 'MedicamentInquiryController');
 
     Route::resource('products', 'ProductController');
-    Route::get('/answer/create', 'ProductController@create')->name('answer.form.create');
-    Route::post('/answer/store', 'ProductController@store')->name('answer.store');
+    Route::get('/answer/create', 'ProductAnswerController@create')->name('answer.form.create');
 
-    Route::post('/inquiries/{inquiryId}/answer/store', 'ProductAnswerController@store')->name('asnwer.store');
+    Route::post('/inquiries/{inquiryId}/product_answer/store', 'ProductAnswerController@store')->name('product_answer.store');
+    Route::post('/inquiries/{inquiryId}/answer/store', 'AnswerController@store')->name('answer.store');
+    Route::delete('answer/{id}/delete', 'AnswerController@destroy')->name('answer.destroy');
 });

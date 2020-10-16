@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label>Категория запроса:*</label>
                     <select class="custom-select border border-dark rounded-0" required name="category_id">
-                        <option selected>Выберите категорию</option>
+                        <option selected disabled>Выберите категорию</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col-auto mt-2">
-                <button type="submit" class="btn btn-olives">Создать запрос</button>
+                <button type="submit" class="btn btn-olives">Создать товар</button>
             </div>
             <div class="col-auto mt-2">
                 <a class="btn" href="{{ route('products.index') }}"> Отмена</a>

@@ -10985,3 +10985,21 @@ body {
   font-weight: normal !important;
 }
 
+.example-logo {
+  height: 102px;
+  width: 102px;
+  border-radius: 100%;
+  background: #F2F2F2;
+}
+
+.example-logo::before {
+  content: "\41B\41E\413\41E";
+  position: absolute;
+  top: 42px;
+  left: 35%;
+}
+
+.bg-grey-comment {
+  background: #F2F2F2;
+}
+

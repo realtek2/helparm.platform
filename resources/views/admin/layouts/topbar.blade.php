@@ -24,7 +24,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a class="navbar-brand" href="{{ route('admin.users.edit', ['user' => Auth::user()]) }}">
                             {{ Auth::user()->name }}
                         </a>
                     </li>
