@@ -21,14 +21,14 @@ class FundSeeder extends Seeder
                 'email' => 'minzdrav@gmail.com',
             ],
             [
-                'name' => 'Фонд 2',
+                'name' => 'Фонд Константина Хабенского',
                 'description' => 'Новый фонд',
                 'address' => 'Россия, Москва',
                 'number' => '987373604272',
                 'email' => 'minzdrav@gmail.com',
             ],
             [
-                'name' => 'Фонд 3',
+                'name' => 'Фонд Честных партизан',
                 'description' => 'Новый фонд',
                 'address' => 'Россия, Москва',
                 'number' => '987373604272',

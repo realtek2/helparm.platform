@@ -15,7 +15,7 @@ class InquirySeeder extends Seeder
         $inquiries = [
             [
                 'name' => 'Бинты',
-                'fund_id' => null,
+                'fund_id' => 3,
                 'category_id' => 1,
                 'request_to_all' => 1,
                 'description' => 'Актеры Тоби Магуайр и Эндрю Гарфилд, которые исполняли роли Человека-паука, снимутся вместе в третьей части фильма. Издание FandomWire сообщает, что Том Холланд также появится в боевике.
