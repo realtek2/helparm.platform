@@ -10909,26 +10909,20 @@ a.text-dark:focus {
   }
 }
 
-@media (max-width: 415px) {
-  .page-footer {
-    bottom: -25px !important;
-  }
-}
-
 body {
   background-color: #fff;
   font-family: "Arial \41E\431\44B\447\43D\44B\439", Arial, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 25px;
 }
 
 .page-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 35px;
-  padding: 10px;
+  position: absolute;
+  height: 25px;
   background: #000;
-  color: #fff;
   width: 100%;
+  bottom: 0;
 }
 
 .dark {
