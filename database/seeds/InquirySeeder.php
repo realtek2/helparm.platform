@@ -15,7 +15,8 @@ class InquirySeeder extends Seeder
         $inquiries = [
             [
                 'name' => 'Бинты',
-                'fund_id' => 3,
+                'fund_id' => null,
+                'created_by_fund' => 1,
                 'category_id' => 1,
                 'request_to_all' => 1,
                 'description' => 'Актеры Тоби Магуайр и Эндрю Гарфилд, которые исполняли роли Человека-паука, снимутся вместе в третьей части фильма. Издание FandomWire сообщает, что Том Холланд также появится в боевике.
@@ -27,7 +28,8 @@ class InquirySeeder extends Seeder
             ],
             [
                 'name' => 'Шприцы',
-                'fund_id' => 1,
+                'fund_id' => 3,
+                'created_by_fund' => 1,
                 'category_id' => 1,
                 'request_to_all' => 0,
                 'description' => 'Актеры Тоби Магуайр и Эндрю Гарфилд, которые исполняли роли Человека-паука, снимутся вместе в третьей части фильма. Издание FandomWire сообщает, что Том Холланд также появится в боевике.
@@ -40,6 +42,7 @@ class InquirySeeder extends Seeder
             [
                 'name' => 'Вода',
                 'fund_id' => 2,
+                'created_by_fund' => 1,
                 'category_id' => 2,
                 'request_to_all' => 0,
                 'description' => 'Актеры Тоби Магуайр и Эндрю Гарфилд, которые исполняли роли Человека-паука, снимутся вместе в третьей части фильма. Издание FandomWire сообщает, что Том Холланд также появится в боевике.

@@ -32,7 +32,7 @@
                 <div class="inquiries-block border p-4 mb-4">
                     <div class="row">
                         <div class="col-md-10">
-                            <span class="p-text-color">ID-{{ $inquiry->id }} / {{ $inquiry->medicamentsCategory->name }} / Москва</span>
+                            <span class="p-text-color">ID-{{ $inquiry->id }} / {{ $inquiry->medicamentsCategory->name }} / {{ $inquiry->createdByFund->address }}</span>
                         </div>
                         <div class="col lead">
                             <h3 class="badge badge-olives float-right" style="font-weight: 400">В работе</h3>
@@ -51,11 +51,13 @@
                     </div>
                     <div class="row mt-3 mb-2">
                         <div class="col-md-10">
-                            <span class="mr-2 p-text-color">Дата создания:</span><span>{{ $inquiry->created_at }}</span>
-                            <span class="ml-4 p-text-color">Тип запроса:</span><a href="#"> {{ $inquiry->request_to_all == 0 ? $inquiry->fund->name : 'Для всех' }}</a>
+                            <span class="mr-2 p-text-color">Создал</span>
+                            <span @if(Auth::user()->fund_id == $inquiry->created_by_fund) class="underline" @endif>{{ $inquiry->createdByFund->name }} @if(Auth::user()->fund_id == $inquiry->created_by_fund) (Вы)@endif</span>
+                            <span class="mr-2 ml-2 p-text-color">{{ $inquiry->created_at }}</span>
+                            <span class="ml-3"><a href="#"> {{ $inquiry->request_to_all == 0 ? $inquiry->fund->name : 'Общий запрос' }}</a></span>
                         </div>
                         <div class="col">
-                            <span class="float-right">Ответов: 1</span>
+                            <span><strong>Ответов:</strong></span><span class="badge badge-warning">{{ $answers->where('inquiry_id', $inquiry->id)->count() ?? '0' }}</span>
                         </div>
                     </div>
                 </div>

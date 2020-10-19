@@ -20,9 +20,10 @@ class MedicamentInquiryController extends Controller
      */
     public function index()
     {
+        $answers = Answer::all();
         $inquiries = MedicamentInquiry::latest()->paginate(5);
     
-        return view('inquiry.index', compact('inquiries'))
+        return view('inquiry.index', compact('inquiries', 'answers'))
              ->with((request()->input('page', 1) - 1) * 5);
     }
 
@@ -57,9 +58,9 @@ class MedicamentInquiryController extends Controller
     {
         $this->validateIquiry();
         $input = $request->all();
-        $input['fund_id'] = Auth::user()->fund_id;
-
-        MedicamentInquiry::create($this->validateIquiry());
+        $input['created_by_fund'] = Auth::user()->fund_id;
+        
+        MedicamentInquiry::create($input);
 
         return redirect(route('inquiries.index'))->with('success', 'Запрос создан.');
     }

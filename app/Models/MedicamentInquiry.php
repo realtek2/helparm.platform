@@ -12,7 +12,8 @@ class MedicamentInquiry extends Model
         'request_to_all',
         'quantity',
         'category_id',
-        'fund_id'
+        'fund_id',
+        'created_by_fund'
     ];
 
     public function medicamentsCategory()
@@ -23,6 +24,11 @@ class MedicamentInquiry extends Model
     public function fund()
     {
         return $this->belongsTo(Fund::class);
+    }
+
+    public function createdByFund()
+    {
+        return $this->belongsTo(Fund::class, 'created_by_fund', 'id');
     }
     
     public function answers()

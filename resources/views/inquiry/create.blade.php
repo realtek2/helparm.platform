@@ -63,7 +63,7 @@
                                <input type="radio" value="0" id="requestToAll2" name="request_to_all" class="custom-control-input">
                                <label class="custom-control-label" for="requestToAll2">Личный запрос</label>
                              </div>
-                            <select class="custom-select border border-dark rounded-0 mt-3" style="display: none" required name="fund_id">
+                            <select class="custom-select border border-dark rounded-0 mt-3" style="display: none" name="fund_id">
                                 <option selected disabled>Выберите фонд</option>
                                 @foreach ($funds as $fund)
                                     <option value="{{ $fund->id }}">{{ $fund->name }}</option>
@@ -74,7 +74,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <label>Укажите необходимое количество*</label>
-                            <input type="text" name="quantity" onkeyup="this.value=this.value.replace(/[^\d]/,'')" class="form-control border border-dark rounded-0"">
+                            <input type="text" name="quantity" required onkeyup="this.value=this.value.replace(/[^\d]/,'')" class="form-control border border-dark rounded-0"">
                         </div>
                     </div>
                     <div class="col-auto mt-2">
