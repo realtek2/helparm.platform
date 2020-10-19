@@ -20,8 +20,7 @@ class ChangeColumnsInProductAnswersTable extends Migration
             $table->dropColumn('name');
             $table->dropForeign(['inquiry_id']);
             $table->dropColumn('inquiry_id');
-            $table->bigInteger('product_id')->unsigned()->after('id');
-            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('product_id')->after('id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -39,8 +38,7 @@ class ChangeColumnsInProductAnswersTable extends Migration
             $table->string('delivery_period');
             $table->dropForeign(['product_id']);
             $table->dropColumn('product_id');
-            $table->bigInteger('inquiry_id')->unsigned();
-            $table->foreign('inquiry_id')->references('id')->on('medicament_inquiries')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('inquiry_id')->constrained('medicament_inquiries')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 }

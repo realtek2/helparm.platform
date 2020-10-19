@@ -15,10 +15,8 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('inquiry_id')->unsigned();
-            $table->foreign('inquiry_id')->references('id')->on('medicament_inquiries')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->bigInteger('fund_id')->unsigned();
-            $table->foreign('fund_id')->references('id')->on('funds')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('inquiry_id')->constrained('medicament_inquiries')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('fund_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('comment');
             $table->string('delivery_period');
             $table->string('quantity');
@@ -26,8 +24,7 @@ class CreateAnswersTable extends Migration
         });
       
         Schema::table('product_answers', function (Blueprint $table) {
-            $table->bigInteger('answer_id')->unsigned()->after('product_id');
-            $table->foreign('answer_id')->references('id')->on('answers')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('answer_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
