@@ -8,7 +8,7 @@
                     <h1><strong>Запросы</strong></h1>
                 </div>
                 <div class="float-right">
-                    <a class="btn btn-olives px-4 py-2" href="{{ route('inquiries.create') }}">Создать запрос</a>
+                    <a class="btn inquiry-index-create-button px-5 py-2" href="{{ route('inquiries.create') }}"><i class="fas fa-plus mr-1"></i> СОЗДАТЬ ЗАПРОС</a>
                 </div>
             </div>
         </div>
