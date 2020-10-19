@@ -29,6 +29,7 @@
         @if(isset($answer_fund_id) && $answer_fund_id == Auth::user()->fund_id)
             @include('inquiry.product_answers.fund_answers')
         @else
+        {{-- {{ dd($answer_fund_id) }} --}}
             @include('inquiry.product_answers.add_inquiry')
         @endif
     @endif

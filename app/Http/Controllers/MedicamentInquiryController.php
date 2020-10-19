@@ -73,7 +73,7 @@ class MedicamentInquiryController extends Controller
      */
     public function show(MedicamentInquiry $inquiry)
     {
-        $answer_id = isset(Answer::where('inquiry_id', $inquiry->id)->get()->first()->id) ? Answer::where('inquiry_id', $inquiry->id)->get()->first()->id : null;
+        $answer_id = isset(Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id) ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id : null;
         $answer_fund_id = isset(Answer::find($answer_id)->fund_id) ? Answer::find($answer_id)->fund_id : null;
 
         $answers = Answer::where('inquiry_id', $inquiry->id)->get();
