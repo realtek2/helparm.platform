@@ -1,7 +1,7 @@
 @foreach ($fundAnswers as $answer)
     <div class="row border-bottom pb-5 pt-4">
         <div class="col-md-1 example-logo"></div>
-        <div class="col-md-7 border-right">
+        <div class="col-md-9 border-right">
             <div class="col">
                 <span class="text-color">Ваш ответ</span>
             </div>
@@ -46,13 +46,13 @@
                         <form action="{{ route('answer.destroy', ['id' => $answer_id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit"><i class="fas fa-times mr-3"></i>Удалить ответ</button>
+                            <a href="#"><i class="fas fa-times mr-3"></i>Удалить ответ</a>
                         </form>
                     </h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 text-center align-self-center">
+        <div class="col-md-2 text-center align-self-center">
             <h5>Ожидание <br>подтверждения</h5>
         </div>
     </div>

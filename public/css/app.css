@@ -10909,6 +10909,13 @@ a.text-dark:focus {
   }
 }
 
+@media (max-width: 1315px) {
+  .status-inquiry-block,
+  .status-inquiry-block-button {
+    width: 100% !important;
+  }
+}
+
 body {
   background-color: #fff;
   font-family: "Arial \41E\431\44B\447\43D\44B\439", Arial, sans-serif;
@@ -10931,6 +10938,7 @@ body {
 
 .p-text-color {
   color: #7f7f7f;
+  font-size: 12px;
 }
 
 .inquiries-block {
@@ -10968,6 +10976,26 @@ body {
   color: #FFFFFF;
 }
 
+.answers-button {
+  border-radius: 4px;
+  padding: 11px 0px 0px 59px;
+  width: 180px;
+  height: 36px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.answers-button.success {
+  background: #27AE60;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.answers-button.abandon {
+  background: #E0E0E0;
+  color: #828282;
+}
+
 .warehouse-table tr:first-child {
   border-bottom: 2px solid black !important;
   border-top-width: 0px !important;
@@ -10980,8 +11008,8 @@ body {
 }
 
 .example-logo {
-  height: 102px;
-  width: 102px;
+  height: 93px;
+  width: 93px;
   border-radius: 100%;
   background: #F2F2F2;
 }
@@ -10989,8 +11017,8 @@ body {
 .example-logo::before {
   content: "\41B\41E\413\41E";
   position: absolute;
-  top: 42px;
-  left: 35%;
+  top: 37px;
+  left: 30%;
 }
 
 .bg-grey-comment {
@@ -10999,5 +11027,58 @@ body {
 
 .underline {
   text-decoration: underline;
+}
+
+.status-inquiry-block-button {
+  background: #2D9CDB;
+  border-radius: 5px;
+  color: #F2F2F2;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  width: 285px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+}
+
+.badge-new-status {
+  background: #27AE60;
+  width: 81px;
+  height: 34px;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
+}
+
+.status-inquiry-block {
+  background: #F2F2F2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 345px;
+}
+
+.status-inquiry-block p {
+  color: #4F4F4F;
+  font-size: 12px;
+}
+
+.edit-button {
+  font-size: 14px;
+  line-height: 16px;
+  color: #333333;
+}
+
+.delete-button {
+  font-size: 14px;
+  line-height: 16px;
+  color: #BDBDBD;
+  background: none;
+  border: none;
 }
 

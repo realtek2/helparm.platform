@@ -16,6 +16,16 @@ class MedicamentInquiry extends Model
         'created_by_fund'
     ];
 
+    const NEW_INQUIRY = 1;
+    const IN_PROCESS = 2;
+    const ARCHIVED = 3;
+
+    public const STATUSES = [
+        self::NEW_INQUIRY => 'Новый',
+        self::IN_PROCESS => 'В процессе',
+        self::ARCHIVED => 'В архиве',
+    ];
+
     public function medicamentsCategory()
     {
         return $this->belongsTo(MedicamentsCategory::class, 'category_id', 'id');

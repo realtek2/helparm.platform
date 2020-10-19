@@ -1,9 +1,9 @@
 @forelse ($answers as $answer)
-<div class="row border-bottom pb-5 pt-4 mb-5">
+<div class="row border-bottom pl-4 pb-5 pt-4 mb-5">
     <div class="col-md-1 example-logo"></div>
-    <div class="col-md-7 border-right">
+    <div class="col-md-8 pr-4 border-right">
         <div class="col">
-            <span class="p-text-color">Ваш ответ</span>
+            <span class="p-text-color">Представительство - {{ $answer->fund->address }}</span>
         </div>
         <div class="col mt-2 mb-4">
             <h2><strong>{{ $answer->fund->name }}</strong></h2>
@@ -44,13 +44,17 @@
         @endif
     </div>
 
-    <div class="col-md-4 text-center align-self-center statusBlock">
-        <a id="accept" class="btn btn-olives px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
+    <div class="col-md-3 text-center align-self-center statusBlock">
+        <a id="accept" class="btn answers-button success px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
     </div>
     
-    <div style="display: none" class="col-md-4 text-center align-self-center deliveryBlock">
-        <a id="accept" class="btn btn-olives px-5 disabled" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Доставлен</a>
-        <a id="reject" class="btn btn-secondary px-5 disabled" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Не доставлен</a>
+    <div style="display: none" class="col-md-2 ml-3 text-center align-self-center deliveryBlock">
+        <span>
+            <a id="delivered" class="btn answers-button success px-5 disabled" href="#">Доставлен</a>
+        </span>
+        <span>
+            <a id="undelivered" class="btn answers-button abandon px-5 disabled" href="#">Не доставлен</a>
+        </span>
     </div>
    
     {{-- <div style="display: none" class="col-md-4 text-center align-self-center deliveredBlock">

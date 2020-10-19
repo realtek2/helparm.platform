@@ -45,7 +45,7 @@
                 @else
                     <li class="nav-item">
                         <a class="navbar-brand" href="{{ route('admin.users.edit', ['user' => Auth::user()]) }}">
-                            <i class="fas fa-user mr-2"></i> {{ Auth::user()->name }} <span class="ml-2">|</span>
+                            <i class="fas fa-user mr-2"></i> {{ Auth::user()->fund->name }} <span class="ml-2">|</span>
                         </a>
                     </li>
                     
