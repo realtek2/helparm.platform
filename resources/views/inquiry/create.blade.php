@@ -56,7 +56,7 @@
                             <label>Тип запроса:*</label>
                             <br>
                             <div class="custom-control custom-radio custom-control-inline">
-                               <input type="radio" value="1" id="requestToAll" name="request_to_all" class="custom-control-input">
+                               <input type="radio" value="1" id="requestToAll" required name="request_to_all" class="custom-control-input">
                                <label class="custom-control-label" for="requestToAll">Для всех</label>
                              </div>
                              <div class="custom-control custom-radio custom-control-inline">

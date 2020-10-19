@@ -20,10 +20,8 @@ class CreateMedicamentInquiriesTable extends Migration
             $table->boolean('request_to_all')->default(false);
             $table->integer('quantity');
 
-            $table->bigInteger('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('medicament_categories')->onDelete('set null');
-            $table->bigInteger('fund_id')->unsigned()->nullable();
-            $table->foreign('fund_id')->references('id')->on('funds')->onDelete('set null');
+            $table->foreignId('category_id')->nullOnDelete()->nullable()->constrained('medicament_categories');
+            $table->foreignId('fund_id')->nullable()->nullOnDelete()->constrained();
             
             $table->timestamps();
         });

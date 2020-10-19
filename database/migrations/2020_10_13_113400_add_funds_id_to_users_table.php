@@ -14,8 +14,7 @@ class AddFundsIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('fund_id')->unsigned()->after('name')->index()->nullable();
-            $table->foreign('fund_id')->references('id')->on('funds')->onDelete('cascade');
+            $table->foreignId('fund_id')->after('name')->nullable()->constrained()->cascadeOnDelete();
         });
     }
 

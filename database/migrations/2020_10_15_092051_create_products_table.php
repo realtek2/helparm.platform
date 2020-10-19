@@ -15,10 +15,8 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('fund_id')->unsigned();
-            $table->foreign('fund_id')->references('id')->on('funds')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('medicament_categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('fund_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->constrained('medicament_categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->integer('quantity');
             $table->timestamps();

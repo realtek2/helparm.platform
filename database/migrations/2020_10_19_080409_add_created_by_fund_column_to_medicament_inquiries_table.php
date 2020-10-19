@@ -14,8 +14,7 @@ class AddCreatedByFundColumnToMedicamentInquiriesTable extends Migration
     public function up()
     {
         Schema::table('medicament_inquiries', function (Blueprint $table) {
-            $table->bigInteger('created_by_fund')->unsigned()->before('fund_id');
-            $table->foreign('created_by_fund')->references('id')->on('funds')->cascadeOnDelete();
+            $table->foreignId('created_by_fund')->before('fund_id')->constrained('funds')->cascadeOnDelete();
         });
     }
 
