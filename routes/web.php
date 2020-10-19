@@ -32,9 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inquiries', 'MedicamentInquiryController');
 
     Route::resource('products', 'ProductController');
+    
+    // Answers
     Route::get('/answer/create', 'ProductAnswerController@create')->name('answer.form.create');
-
-    Route::post('/inquiries/{inquiryId}/product_answer/store', 'ProductAnswerController@store')->name('product_answer.store');
     Route::post('/inquiries/{inquiryId}/answer/store', 'AnswerController@store')->name('answer.store');
+    Route::get('answer/{id}/accept_answer', 'AnswerController@acceptAnswer')->name('answer.accept_answer');
     Route::delete('answer/{id}/delete', 'AnswerController@destroy')->name('answer.destroy');
 });

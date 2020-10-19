@@ -43,10 +43,60 @@
             </div>
         @endif
     </div>
-    <div class="col-md-4 text-center align-self-center">
-       <button class="btn btn-olives px-5">Принять</button>
+
+    <div class="col-md-4 text-center align-self-center statusBlock">
+        <a id="accept" class="btn btn-olives px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
     </div>
+    
+    <div style="display: none" class="col-md-4 text-center align-self-center deliveryBlock">
+        <a id="accept" class="btn btn-olives px-5 disabled" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Доставлен</a>
+        <a id="reject" class="btn btn-secondary px-5 disabled" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Не доставлен</a>
+    </div>
+   
+    {{-- <div style="display: none" class="col-md-4 text-center align-self-center deliveredBlock">
+        <a id="accept" class="btn btn-olives px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Доставлен</a>
+        <a id="reject" class="btn btn-secondary px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Не доставлен</a>
+    </div> --}}
+    
 </div>
+
+@if($answer->delivery_status === App\Models\Answer::DELIVERY_ASNWER_CONFIRMED)
+    @section('custom_script')
+        <script>
+            $(window).on('load', function(){
+                $('.deliveryBlock').css('display', 'block');
+                $('.statusBlock').hide();
+            });
+        </script>
+    @endsection
+@elseif($answer->delivery_status === App\Models\Answer::DELIVERED)
+    @section('custom_script')
+        <script>
+            $(window).on('load', function(){
+                $('.deliveredBlock').css('display', 'inherit');
+            });
+        </script>
+    @endsection
+@endif
 @empty
     <h2>Ответов нет</h2>
 @endforelse
+
+@section('custom_script')
+    <script>
+        $(document).ready(function(){
+            $('#accept').on('click', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ route('answer.accept_answer', ['id' => $answer->id]) }}",
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success:function(){
+                        $('.statusBlock').hide();
+                        $('.deliveryBlock').show();
+                    }
+                });
+            });
+        });
+    </script>
+@endsection

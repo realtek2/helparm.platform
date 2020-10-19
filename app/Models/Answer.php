@@ -21,15 +21,15 @@ class Answer extends Model
     protected $dates = ['delivery_sent_date', 'date_of_receiving'];
 
     const WAITING_FOR_CONFIRMATION_DELIVERY = 0;
-    const DELIVERY_ANSWER_REGECTED = 1;
-    const DELIVERY_ASNWER_CONFIRMED = 2;
-    const DELIVERY_SENT = 3;
-    const DELIVERED = 4;
-    const NOT_DELIVERED = 5;
+    // const DELIVERY_ANSWER_REJECTED = 1;
+    const DELIVERY_ASNWER_CONFIRMED = 1;
+    const DELIVERY_SENT = 2;
+    const DELIVERED = 3;
+    const NOT_DELIVERED = 4;
 
     public const STATUSES = [
         self::WAITING_FOR_CONFIRMATION_DELIVERY,
-        self::DELIVERY_ANSWER_REGECTED,
+        // self::DELIVERY_ANSWER_REJECTED,
         self::DELIVERY_ASNWER_CONFIRMED,
         self::DELIVERY_SENT,
         self::DELIVERED,

@@ -65,6 +65,17 @@ class AnswerController extends Controller
         return redirect(route('inquiries.show', ['inquiry' => $inquiryId]))->with('success', 'Запрос создан.');
     }
 
+    public function acceptAnswer($answerId)
+    {
+        $answer = Answer::findOrfail($answerId);
+        $answer->delivery_status = Answer::DELIVERY_ASNWER_CONFIRMED;
+        $answer->save();
+
+        return response()->json([
+            'type'    => 'success',
+            'message' => 'Ответ на запрос принят',
+        ]);
+    }
     /**
      * Display the specified resource.
      *

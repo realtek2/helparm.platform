@@ -34,3 +34,21 @@
     @endif
 </div>
 @endsection
+
+{{-- @if($answer->delivery_status === App\Models\Answer::DELIVERY_ASNWER_CONFIRMED)
+    @section('custom_script')
+        <script>
+            $(window).on('load', function(){
+                $('.deliveryBlock').css('display', 'inherit');
+            });
+        </script>
+    @endsection
+@elseif($answer->delivery_status === App\Models\Answer::DELIVERED)
+    @section('custom_script')
+        <script>
+            $(window).on('load', function(){
+                $('.deliveredBlock').css('display', 'inherit');
+            });
+        </script>
+    @endsection
+@endif --}}
