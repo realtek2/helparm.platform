@@ -61,6 +61,30 @@ class ProductSeeder extends Seeder
                 'unit' => 'уп',
                 'free' => 250,
             ],
+            [
+                'name' => 'Амоксиклав',
+                'fund_id' => 2,
+                'category_id' => 1,
+                'quantity' => 100,
+                'unit' => 'шт',
+                'free' => 100,
+            ],
+            [
+                'name' => 'Бинт марлевый',
+                'fund_id' => 2,
+                'category_id' => 1,
+                'quantity' => 500,
+                'unit' => 'шт',
+                'free' => 500,
+            ],
+            [
+                'name' => 'Гель для рук',
+                'fund_id' => 2,
+                'category_id' => 2,
+                'quantity' => 250,
+                'unit' => 'уп',
+                'free' => 250,
+            ],
         ];
 
         foreach ($products as $product) {

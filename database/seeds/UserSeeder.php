@@ -21,5 +21,12 @@ class UserSeeder extends Seeder
             'is_admin' => true,
             'fund_id' => Fund::first()->id,
         ]);
+        User::firstOrcreate([
+            'email' => 'test@test.com',
+            'name' => 'Test',
+            'password' => Hash::make('test'),
+            'is_admin' => true,
+            'fund_id' => 2,
+        ]);
     }
 }
