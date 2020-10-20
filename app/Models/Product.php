@@ -3,15 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
+    use Sortable;
     protected $fillable = [
         'fund_id',
         'category_id',
         'name',
         'quantity'
     ];
+
+    public $sortable = ['id'];
 
     const MEDICAMENTS = 1;
     const FOOD = 2;

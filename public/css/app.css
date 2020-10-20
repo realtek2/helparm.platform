@@ -11158,3 +11158,15 @@ body {
   border-bottom: 1px solid #2D9CDB;
 }
 
+.fund-button {
+  width: 103px;
+  height: 36px;
+  border-radius: 4px;
+  background: #BDBDBD;
+  display: table-cell;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+

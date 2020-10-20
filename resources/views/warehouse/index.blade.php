@@ -27,7 +27,7 @@
             <h3>Нет созданных товаров.</h3>
         @endif
 
-        {!! $products->links() !!}
+        {!! $products->appends(['sort' => 'id'])->links() !!}
         
     </div>
       

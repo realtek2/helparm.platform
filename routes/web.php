@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inquiries', 'MedicamentInquiryController');
 
     Route::resource('products', 'ProductController');
+    Route::get('products/datatable', 'ProductController@datatable')->name('products.datatable');
     
     // Answers
     Route::get('/answer/create', 'ProductAnswerController@create')->name('answer.form.create');

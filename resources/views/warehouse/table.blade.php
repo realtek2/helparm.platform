@@ -1,6 +1,6 @@
 <table class="table warehouse-table">
     <tr>
-        <th>№</th>
+        <th>@sortablelink('id', '№')</th>
         <th>Имя</th>
         <th>Фонд</th>
         <th>Категория</th>

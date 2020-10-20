@@ -6,6 +6,7 @@ use App\Models\MedicamentsCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('fund_id', Auth::user()->fund_id)->latest()->paginate(5);
+        $products = Product::where('fund_id', Auth::user()->fund_id)->sortable('id')->paginate(5);
 
         return view('warehouse.index', compact('products'))->with((request()->input('page', 1) - 1) * 5);
     }
