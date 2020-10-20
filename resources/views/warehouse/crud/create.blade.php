@@ -52,7 +52,7 @@
                 <button type="submit" class="btn btn-olives">Создать товар</button>
             </div>
             <div class="col-auto mt-2">
-                <a class="btn" href="{{ route('products.index') }}"> Отмена</a>
+                <a class="btn" href="{{ route('products.my_warehouse') }}"> Отмена</a>
             </div>
         </div>
     </form>

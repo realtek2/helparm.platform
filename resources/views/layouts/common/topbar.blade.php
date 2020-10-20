@@ -28,7 +28,7 @@
                         <a href="{{ route('funds.index') }}" class="navbar-brand">Фонды</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('products.index') }}" class="navbar-brand">Склад</a>
+                        <a href="{{ route('products.my_warehouse') }}" class="navbar-brand">Склад</a>
                     </li>
                 </ul>
                 @endauth

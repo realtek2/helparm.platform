@@ -8,7 +8,7 @@
                 <h2>Редактирование фонда</h2>
             </div>
             <div class="pull-right my-4">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Назад</a>
+                <a class="btn btn-primary" href="{{ route('products.my_warehouse') }}"> Назад</a>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                 <button type="submit" class="btn btn-olives">Редактировать товар</button>
             </div>
             <div class="col-auto mt-2">
-                <a class="btn" href="{{ route('products.index') }}"> Отмена</a>
+                <a class="btn" href="{{ route('products.my_warehouse') }}"> Отмена</a>
             </div>
         </div>
     

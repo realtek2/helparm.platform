@@ -17,7 +17,7 @@
         <td>
             <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                 {{-- <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Изменить</a> --}}
-                <a class="btn btn-secondary px-5 disabled" href="{{ route('products.index', $product->id) }}">Запросить</a>
+                <a class="btn btn-secondary px-5 disabled" href="{{ route('products.my_warehouse', $product->id) }}">Запросить</a>
                 @csrf
                 @method('DELETE')
 

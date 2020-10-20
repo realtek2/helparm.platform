@@ -12,7 +12,11 @@ class Product extends Model
         'fund_id',
         'category_id',
         'name',
-        'quantity'
+        'quantity',
+        'unit',
+        'free',
+        'reserve',
+        'is_urgent'
     ];
 
     public $sortable = ['id'];

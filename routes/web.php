@@ -31,7 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('inquiries', 'MedicamentInquiryController');
 
-    Route::resource('products', 'ProductController');
+    Route::resource('products', 'ProductController', ['except' => ['index']]);
+    Route::get('/my_warehouse', 'ProductController@myWarehouse')->name('products.my_warehouse');
+    Route::get('/all_warehouses', 'ProductController@allWarehouses')->name('products.all_warehouses');
     Route::get('products/datatable', 'ProductController@datatable')->name('products.datatable');
     
     // Answers

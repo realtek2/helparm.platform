@@ -15,11 +15,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function myWarehouse()
     {
         $products = Product::where('fund_id', Auth::user()->fund_id)->sortable('id')->paginate(5);
 
-        return view('warehouse.index', compact('products'))->with((request()->input('page', 1) - 1) * 5);
+        return view('warehouse.my_warehouse', compact('products'))->with((request()->input('page', 1) - 1) * 5);
+    }
+
+    public function allWarehouses()
+    {
+        $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->latest()->paginate(5);
+
+        return view('warehouse.all_warehouses', compact('products'))->with((request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -31,7 +38,7 @@ class ProductController extends Controller
     {
         $categories = MedicamentsCategory::all();
         
-        return view('warehouse.create', compact('categories'));
+        return view('warehouse.crud.create_modal', compact('categories'));
     }
 
     /**
@@ -44,11 +51,12 @@ class ProductController extends Controller
     {
         $this->validateProduct();
         $input = $request->all();
+        $input['free'] = $request->quantity;
         $input['fund_id'] = Auth::user()->fund_id;
        
         Product::create($input);
 
-        return redirect(route('products.index'))->with('success', 'Товар создан.');
+        return redirect(route('products.my_warehouse'))->with('success', 'Товар создан.');
     }
 
     /**
@@ -72,7 +80,7 @@ class ProductController extends Controller
     {
         $categories = MedicamentsCategory::all();
 
-        return view('warehouse.edit', compact('product', 'categories'));
+        return view('warehouse.crud.edit', compact('product', 'categories'));
     }
 
     /**
@@ -86,7 +94,7 @@ class ProductController extends Controller
     {
         $product->update($this->validateProduct());
 
-        return redirect(route('products.index'))->with('success', 'Товар обновлён.');
+        return redirect(route('products.my_warehouse'))->with('success', 'Товар обновлён.');
     }
 
     /**
@@ -99,7 +107,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect(route('products.index'))->with('success', 'Товар удалён.');
+        return redirect(route('products.my_warehouse'))->with('success', 'Товар удалён.');
     }
 
     protected function validateProduct()
@@ -107,7 +115,8 @@ class ProductController extends Controller
         return request()->validate([
             'name' => 'required',
             'category_id' => 'required',
-            'quantity' => 'required'
+            'quantity' => 'required',
+            'unit' => 'required'
         ]);
     }
 }

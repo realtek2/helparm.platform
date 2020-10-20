@@ -11170,3 +11170,49 @@ body {
   vertical-align: middle;
 }
 
+.list-inline-item a {
+  text-decoration: none !important;
+  color: #7f7f7f;
+}
+
+.warehouse-table-icon {
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15px;
+  height: 15px;
+  display: table-cell;
+}
+
+.warehouse-table-icon.undefined_object {
+  background-image: url(/images/undegined_object.png?6dde7b4bef02a64504bf7b094e20a64d);
+}
+
+.warehouse-table-icon.increase_request {
+  background-image: url(/images/increase_request.png?6bd9e2445c27318d983f61eebeca483f);
+}
+
+.warehouse-table-icon.logs {
+  background-image: url(/images/logs.png?d817bcdadc682bb50b598b59562c689b);
+}
+
+.product-name {
+  font-size: 14px;
+  color: #828282;
+}
+
+.product-name.underlined {
+  text-decoration: underline;
+}
+
+.topbar-li {
+  color: #828282;
+  font-size: 18px;
+}
+
+.unload {
+  width: 126px;
+  height: 38px;
+  border-radius: 5px;
+}
+

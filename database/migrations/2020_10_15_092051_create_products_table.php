@@ -19,6 +19,10 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->nullable()->constrained('medicament_categories')->nullOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->integer('quantity');
+            $table->boolean('is_urgent')->default(false);
+            $table->string('unit');
+            $table->integer('reserve')->default(0);
+            $table->integer('free');
             $table->timestamps();
         });
     }
