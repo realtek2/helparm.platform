@@ -77,17 +77,18 @@ class MedicamentInquiryController extends Controller
                      ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id
                      : null;
 
-        return view('inquiry.show', compact(
+        return view(
+            'inquiry.show',
             [
-                'inquiry',
+                'inquiry' => $inquiry,
                 'funds' => Fund::all(),
                 'products' => Product::all(),
                 'answer_id' => isset(Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id)
-                               ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id
-                               : null,
+                                ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id
+                                : null,
                 'answer_fund_id' => isset(Answer::find($answer_id)->fund_id) ? Answer::find($answer_id)->fund_id : null,
                 'answers' => Answer::where('inquiry_id', $inquiry->id)->get(),
-                'fundAnswers',
+                'fundAnswers' => Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get(),
                 'productAnswers' => ProductAnswer::where('answer_id', $answer_id)->with(['product'])->get(),
                 'countSendedProducts' => Answer::selectRaw('sum(quantity) as total')
                                                ->where('inquiry_id', $inquiry->id)
@@ -98,7 +99,7 @@ class MedicamentInquiryController extends Controller
                                                   ->where('delivery_status', Answer::DELIVERED)
                                                   ->first(),
             ]
-        ));
+        );
     }
 
     /**
