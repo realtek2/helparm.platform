@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
 
-    Route::resource('funds', 'FundController', ['except' => ['show']]);
+    Route::resource('funds', 'FundController');
 
     Route::resource('inquiries', 'MedicamentInquiryController');
 

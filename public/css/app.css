@@ -11089,3 +11089,25 @@ body {
   font-size: 12px;
 }
 
+.maybe-logo {
+  height: 185px;
+  width: 185px;
+  background: #E0E0E0;
+  border-radius: 6px;
+}
+
+.navbar-custom {
+  height: 81px;
+  background: #000;
+}
+
+.navbar-custom a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.navbar-custom.activem {
+  color: #56CCF2;
+}
+

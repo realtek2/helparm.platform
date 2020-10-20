@@ -38,15 +38,7 @@
                 <td>{{ $fund->address }}</td>
                 <td>{{ $fund->number }}</td>
                 <td>{{ $fund->email }}</td>
-                <td>
-                    <form action="{{ route('funds.destroy', $fund->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('funds.edit', $fund->id) }}">Изменить</a>
-                        @csrf
-                        @method('DELETE')
-        
-                        <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>
-                </td>
+                <td><a href="{{ route('funds.show', ['fund' => $fund]) }}">Подробнее</a></td>
             </tr>
             @endforeach
         </table>

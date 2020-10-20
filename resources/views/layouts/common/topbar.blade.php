@@ -10,7 +10,7 @@
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'helparm.platform') }}</a>
       </nav> --}}
-      <nav class="text-white navbar navbar-expand-sm navbar-dark dark mb-4">
+      <nav class="text-white navbar navbar-expand-sm navbar-custom mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}

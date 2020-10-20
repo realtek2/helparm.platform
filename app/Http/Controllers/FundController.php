@@ -44,6 +44,17 @@ class FundController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Fund  $fund
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Fund $fund)
+    {
+        return view('fund.show', compact('fund'));
+    }
+    
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Fund  $fund
