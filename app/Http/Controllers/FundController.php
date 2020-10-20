@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Fund;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FundController extends Controller
 {
@@ -14,10 +17,22 @@ class FundController extends Controller
      */
     public function index()
     {
-        $funds = Fund::latest()->paginate(5);
+        $funds = Fund::with('answers', 'products')->latest()->paginate(5);
+        
+        $medicaments = Fund::with('products')->whereHas('products', function ($query) {
+            return $query->where('category_id', Product::MEDICAMENTS);
+        })->with(['products' => function ($query) {
+            return $query->where('category_id', Product::MEDICAMENTS)->with('fund');
+        }])->get();
+        
+        return view('fund.index', [
+            'funds' => $funds
+            ])->with((request()->input('page', 1) - 1) * 5);
+    }
 
-        return view('fund.index', ['funds' => $funds])
-             ->with((request()->input('page', 1) - 1) * 5);
+    public function getMedicamentsQuantityCount($fund_id)
+    {
+        return Product::selectRaw('sum(quantity) as total')->where('fund_id', $fund_id)->get()->first()->total;
     }
 
     /**

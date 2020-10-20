@@ -11107,7 +11107,54 @@ body {
   font-weight: 400;
 }
 
-.navbar-custom.activem {
+.active {
   color: #56CCF2;
+  border-bottom: 1px solid #fff;
+}
+
+.rounded-icon {
+  width: 30px;
+  height: 30px;
+  background: #C4C4C4;
+  border-radius: 100%;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rounded-icon.medicament {
+  background-image: url(/images/medicaments.png?507870e97dca330ef742b11bd6d9505d);
+}
+
+.rounded-icon.food {
+  background-image: url(/images/food.png?2a93d390f0fec622cf347e9c661cd138);
+}
+
+.rounded-icon.financial_aid {
+  background-image: url(/images/financial_aid.png?87f7e9c00db378b421c16c70c3cc141f);
+}
+
+.fund-index-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  background: #E0E0E0;
+}
+
+.fund-show-button {
+  width: 165px;
+  height: 35px;
+  border-radius: 4px;
+  background: #2D9CDB;
+  display: table-cell;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.border-bottom-funds {
+  border-bottom: 1px solid #2D9CDB;
 }
 

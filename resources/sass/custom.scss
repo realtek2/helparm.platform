@@ -17,11 +17,11 @@ body{
     font-family: "Arial Обычный", Arial, sans-serif;
     position: relative;
     min-height: 100vh;
-    padding-bottom:25px;
+    padding-bottom: 25px;
 }
 .page-footer{
     position: absolute; 
-    height: 25px;
+    height:  25px;
     background: #000; 
     width: 100%; 
     bottom: 0;
@@ -178,7 +178,47 @@ body{
         font-size: 14px;
         font-weight: 400;
     }
-    &.activem{
-        color: #56CCF2;
+}
+.active{
+    color: #56CCF2;
+    border-bottom: 1px solid #fff;
+}
+.rounded-icon{
+    width: 30px;
+    height: 30px;
+    background: #C4C4C4;
+    border-radius: 100%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    &.medicament{
+        background-image: url('../../public/img/medicaments.png');
     }
+    &.food{
+        background-image: url('../../public/img/food.png');
+    }
+    &.financial_aid{
+        background-image: url('../../public/img/financial_aid.png');
+    }
+}
+.fund-index-logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    background: #E0E0E0;
+}
+.fund-show-button{
+    width: 165px;
+    height: 35px;
+    border-radius: 4px;
+    background: #2D9CDB;
+    display: table-cell;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+.border-bottom-funds{
+    border-bottom: 1px solid #2D9CDB;
 }

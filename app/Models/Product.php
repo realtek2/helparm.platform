@@ -13,6 +13,16 @@ class Product extends Model
         'quantity'
     ];
 
+    const MEDICAMENTS = 1;
+    const FOOD = 2;
+    const FINANCIAL_AID = 3;
+
+    public $prdocuts_category = [
+        self::MEDICAMENTS => 'Медикаменты',
+        self::FOOD => 'Продукты питания',
+        self::FINANCIAL_AID => 'Финансовая помощь'
+    ];
+
     public function fund()
     {
         return $this->belongsTo(Fund::class);
