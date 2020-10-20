@@ -21,6 +21,7 @@ class CreateFundsTable extends Migration
             $table->string('number');
             $table->string('email');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,7 +15,7 @@ class CreateProductAnswersTable extends Migration
     {
         Schema::create('product_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inquiry_id')->cascadeOnDelete()->cascadeOnUpdate()->constrained('medicament_inquiries');
+            $table->foreignId('inquiry_id')->nullOnDelete()->cascadeOnUpdate()->constrained('medicament_inquiries');
             $table->string('name');
             $table->integer('qunatity');
             $table->text('comment')->nullable();

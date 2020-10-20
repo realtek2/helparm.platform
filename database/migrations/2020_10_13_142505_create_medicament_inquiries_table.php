@@ -24,6 +24,7 @@ class CreateMedicamentInquiriesTable extends Migration
             $table->foreignId('fund_id')->nullable()->nullOnDelete()->constrained();
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
