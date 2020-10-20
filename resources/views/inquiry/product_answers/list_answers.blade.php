@@ -81,10 +81,6 @@
             });
         </script>
     @endsection
-@endif
-@empty
-    <h2>Ответов нет</h2>
-@endforelse
 
 @section('custom_script')
     <script>
@@ -104,3 +100,7 @@
         });
     </script>
 @endsection
+@endif
+@empty
+    <h2>Ответов нет</h2>
+@endforelse
