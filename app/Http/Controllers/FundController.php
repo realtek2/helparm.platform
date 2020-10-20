@@ -19,20 +19,9 @@ class FundController extends Controller
     {
         $funds = Fund::with('answers', 'products')->latest()->paginate(5);
         
-        $medicaments = Fund::with('products')->whereHas('products', function ($query) {
-            return $query->where('category_id', Product::MEDICAMENTS);
-        })->with(['products' => function ($query) {
-            return $query->where('category_id', Product::MEDICAMENTS)->with('fund');
-        }])->get();
-        
         return view('fund.index', [
             'funds' => $funds
             ])->with((request()->input('page', 1) - 1) * 5);
-    }
-
-    public function getMedicamentsQuantityCount($fund_id)
-    {
-        return Product::selectRaw('sum(quantity) as total')->where('fund_id', $fund_id)->get()->first()->total;
     }
 
     /**
