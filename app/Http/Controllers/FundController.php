@@ -17,7 +17,7 @@ class FundController extends Controller
      */
     public function index()
     {
-        $funds = Fund::with('answers', 'products')->latest()->paginate(5);
+        $funds = Fund::with('answers', 'products')->orderBy('id', 'asc')->latest()->paginate(5);
         
         return view('fund.index', [
             'funds' => $funds
