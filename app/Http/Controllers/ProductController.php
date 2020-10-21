@@ -35,21 +35,36 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function datatable(Request $request)
+    public function datatable()
     {
         $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->get();
 
         return Datatables::of($products)
-        ->addIndexColumn()
-   
-        ->addColumn('action', function ($row) {
-            $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-
-            return $btn;
-        })
-        ->rawColumns(['action'])
-        ->make(true);
-        ;
+                         ->editColumn('name', function ($products) {
+                             return $products->medicamentsCategory->name;
+                         })
+                         ->editColumn('category_id', function ($products) {
+                             return $products->medicamentsCategory->name;
+                         })
+                         ->addColumn('undefined_object', function () {
+                             return view('warehouse.buttons.undefined_object')
+                            ->render();
+                         })
+                         ->addColumn('increase_request', function () {
+                             return view('warehouse.buttons.increase_request')
+                             ->render();
+                         })
+                         ->addColumn('logs', function () {
+                             return view('warehouse.buttons.logs')
+                            ->render();
+                         })
+                         ->addColumn('move_button', function ($products) {
+                             return view('warehouse.buttons.move_button', [
+                                 'id' => $products->id
+                             ])->render();
+                         })
+                         ->rawColumns(['undefined_object','increase_request','logs'])
+                         ->make(true);
     }
 
     /**

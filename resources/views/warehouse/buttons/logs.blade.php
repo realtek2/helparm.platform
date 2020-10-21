@@ -1,0 +1,1 @@
+<a class="warehouse-table-icon logs" href="#"></a>

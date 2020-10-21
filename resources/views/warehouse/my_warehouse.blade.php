@@ -29,17 +29,12 @@
             </div>
         @endif
 
-        <div class="row">
-            <div class="col-md-12">
-                <input type="text" name="email" class="form-control searchEmail" placeholder="Search for Email Only...">
-            </div>
-        </div>
-
         @if ($products->count())
         <table class="table warehouse-table" id="warehouse-table">
             <thead>
                 <tr>
-                    <th width="4%">@sortablelink('is_urgent', '+')</th>
+                    {{-- @sortablelink('is_urgent', '+') --}}
+                    <th width="1%"></th>
                     <th width="4%">№</th>
                     <th width="24%">Наименование</th>
                     <th width="12%">Категория</th>
@@ -47,9 +42,9 @@
                     <th width="8%">Остаток</th>
                     <th width="8%">Резеерв</th>
                     <th width="8%">Свободно</th>
-                    <th width="4%"></th>
-                    <th width="4%"></th>
-                    <th width="4%"></th>
+                    <th width="5%"></th>
+                    <th width="5%"></th>
+                    <th width="5%"></th>
                     <th width="8%"></th>
                 </tr>
             </thead>
@@ -95,39 +90,52 @@
 @section('custom_script')
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js" defer></script>
     <script type="text/javascript">
-        $(function () {
-         
-          var table = $('#warehouse-table').DataTable({
-              processing: true,
-              serverSide: false,
-              ajax: {
+       $(document).ready(function(){
+           $.ajaxSetup({
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+            });
+
+            let otable = $('#warehouse-table').DataTable({
+            ajax: {
                 url: "{{ route('products.datatable') }}",
-                data: function (d) {
-                      d.email = $('.searchEmail').val(),
-                      d.search = $('input[type="search"]').val()
-                  }
-              },
-              columns: [
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'name', name: 'name'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
-              ]
-          });
-         
-          $(".searchEmail").keyup(function(){
-              table.draw();
-          });
-        
+                type: 'POST',
+            },
+            pageLength: 10,
+            processing: true,
+            serverSide: true,
+            bPaginate: false,
+            sPaginationType: "full_numbers",
+            responsive: true,  
+            searching: false,  
+            // dom: 'lrtp', // uncheck if need to search & remove searching attribute
+            columns: [
+                {data: 'is_urgent'},
+                {data: 'id', orderable: false},
+                {data: 'name', orderable: false, className: 'product-name underlined'},
+                {data: 'category_id', orderable: false, className: 'p-text-color'},
+                {data: 'unit', orderable: false, className: "font-weight-bold"},
+                {data: 'quantity', orderable: false, className: "font-weight-bold"},
+                {data: 'reserve', orderable: false, className: "font-weight-bold"},
+                {data: 'free', orderable: false, className: "font-weight-bold"},
+                {data: 'undefined_object', orderable: false},
+                {data: 'increase_request', orderable: false},
+                {data: 'logs', orderable: false},
+                {data: 'move_button', orderable: false},
+
+            ],
+            columnDefs: [
+                { 
+                    targets: -1, 
+                    orderable: true,
+                    render: function ( data, type, full ) {
+                    return $("<div/>").html(data).text(); 
+                    }
+                }
+            ],
         });
+    });
       </script>
 
 @endsection
