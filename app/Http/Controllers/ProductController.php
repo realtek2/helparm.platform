@@ -37,6 +37,10 @@ class ProductController extends Controller
         $products = $query->orderBy('id', 'desc')->get();
 
         return Datatables::of($products)
+                         ->editColumn('is_urgent', function () {
+                             return view('warehouse.buttons.not_urgent')
+                             ->render();
+                         })
                          ->editColumn('category_id', function ($products) {
                              return $products->medicamentsCategory->name;
                          })
@@ -59,7 +63,7 @@ class ProductController extends Controller
                                  'id' => $products->id
                              ])->render();
                          })
-                         ->rawColumns(['undefined_object','increase_request','logs'])
+                         ->rawColumns(['undefined_object','increase_request','logs', 'is_urgent'])
                          ->make(true);
     }
 
@@ -70,6 +74,10 @@ class ProductController extends Controller
         $products = $query->orderBy('id', 'desc')->get();
 
         return Datatables::of($products)
+                         ->editColumn('is_urgent', function () {
+                             return view('warehouse.buttons.not_urgent')
+                             ->render();
+                         })
                          ->editColumn('category_id', function ($products) {
                              return $products->medicamentsCategory->name;
                          })
@@ -84,7 +92,7 @@ class ProductController extends Controller
                                 'id' => $products->id
                             ])->render();
                          })
-                         ->rawColumns(['fund_id'])
+                         ->rawColumns(['fund_id', 'is_urgent'])
                          ->make(true);
     }
 

@@ -41,7 +41,7 @@
             <thead>
                 <tr>
                     {{-- @sortablelink('is_urgent', '+') --}}
-                    <th width="1%" style="margin-right: 20px !important"></th>
+                    <th width="5%"></th>
                     <th width="4%">№</th>
                     <th width="24%">Наименование</th>
                     <th width="12%">Категория</th>

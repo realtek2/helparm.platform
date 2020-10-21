@@ -29,7 +29,7 @@
         <table class="table warehouse-table" id="warehouse-table">
             <thead>
                 <tr>
-                    <th width="3%"></th>
+                    <th width="5%"></th>
                     <th width="3%">№</th>
                     <th width="24%">Наименование</th>
                     <th width="12%">Категория</th>

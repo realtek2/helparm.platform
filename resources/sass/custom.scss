@@ -252,6 +252,10 @@ body{
     &.logs{
         background-image: url('../../public/img/logs.png');
     }
+    &.not_urgent{
+        width: 30px;
+        background-image: url('../../public/img/not_urgent.png');
+    }
 }
 .product-name{
     font-size: 14px;
@@ -282,9 +286,6 @@ body{
 .search-button{
     height: 45px;
 }
-.warehouse-table thead th:not(:first){
-    padding-left: 0 !important;
-}
 table.dataTable tbody td {
     vertical-align: middle;
 }
@@ -299,4 +300,7 @@ table.dataTable thead th {
 }
 table.dataTable.no-footer {
     border-bottom: 1px solid #dee2e6;
+}
+table.dataTable thead th {
+    padding-left: 0.6rem;
 }
