@@ -44,8 +44,10 @@ class ProductController extends Controller
                              return view('warehouse.buttons.undefined_object')
                             ->render();
                          })
-                         ->addColumn('increase_request', function () {
-                             return view('warehouse.buttons.increase_request')
+                         ->addColumn('increase_request', function ($products) {
+                             return view('warehouse.buttons.increase_request', [
+                                 'product' => $products
+                             ])
                              ->render();
                          })
                          ->addColumn('logs', function () {
@@ -98,6 +100,19 @@ class ProductController extends Controller
         return view('warehouse.crud.create_modal', compact('categories'));
     }
 
+    public function changeQuantity(Product $product)
+    {
+        return view('warehouse.crud.change_quantity', compact('product'));
+    }
+
+    public function storeQuantity(Request $request, $productId)
+    {
+        $product = Product::findOrfail($productId);
+        $product->quantity = $request->quantity;
+        $product->save();
+
+        return back();
+    }
     /**
      * Store a newly created resource in storage.
      *

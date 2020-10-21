@@ -1,1 +1,1 @@
-<a class="warehouse-table-icon increase_request" href="#"></a>
+<a ajax_target="{{ route('products.changeQuantity', ['product' => $product]) }}" href="javascript:void(0);" class="warehouse-table-icon increase_request remote_modal"></a>

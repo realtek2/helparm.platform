@@ -31,11 +31,18 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('inquiries', 'MedicamentInquiryController');
 
+    // Products
     Route::resource('products', 'ProductController', ['except' => ['index']]);
+
     Route::get('/my_warehouse', 'ProductController@myWarehouse')->name('products.my_warehouse');
     Route::get('/all_warehouses', 'ProductController@allWarehouses')->name('products.all_warehouses');
+
     Route::post('products/datatable', 'ProductController@datatable')->name('products.datatable');
     Route::post('all_warehouses/datatable', 'ProductController@allWarehousesDatatable')->name('products.all_warehouses.datatable');
+
+    Route::get('/products/{product}/changeQuantity', 'ProductController@changeQuantity')->name('products.changeQuantity');
+    Route::post('/products/{productId}/storeQuantity', 'ProductController@storeQuantity')->name('products.storeQuantity');
+
     
     // Answers
     Route::get('/answer/create', 'ProductAnswerController@create')->name('answer.form.create');
