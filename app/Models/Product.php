@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
@@ -44,5 +46,10 @@ class Product extends Model
     public function productAnswer()
     {
         return $this->hasOne(ProductAnswer::class);
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        $filter->apply($builder);
     }
 }

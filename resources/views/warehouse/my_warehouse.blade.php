@@ -11,18 +11,25 @@
                     <h1><strong>Мой склад</strong></h1>
                 </div>
             </div>
-            <div class="col">
-                <div class="float-right">
-                    {{-- <a class="btn unload" href="#"><i class="fas fa-plus mr-2"></i>ВЫГРУЗИТЬ</a> --}}
-                    <div class="col-md-12">
-                        <a ajax_target="{{ route('products.create') }}" href="javascript:void(0);" class="btn inquiry-index-create-button remote_modal">
-                            <i class="fa fa-plus mr-2"></i> ДОБАВИТЬ
-                        </a>
-                    </div>
-                    {{-- <a class="btn inquiry-index-create-button" href="{{ route('products.create') }}"><i class="fas fa-plus mr-2"></i>ДОБАВИТЬ</a> --}}
-                </div>
-            </div>
         </div>
+
+            <form id="product-filter">
+                <div class="row">
+                @include('warehouse.filter')
+                    <div class="col">
+                        <div class="float-right">
+                            {{-- <a class="btn unload" href="#"><i class="fas fa-plus mr-2"></i>ВЫГРУЗИТЬ</a> --}}
+                            <div class="col-md-12">
+                                <a ajax_target="{{ route('products.create') }}" href="javascript:void(0);" class="btn inquiry-index-create-button remote_modal">
+                                    <i class="fa fa-plus mr-2"></i> ДОБАВИТЬ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
@@ -34,7 +41,7 @@
             <thead>
                 <tr>
                     {{-- @sortablelink('is_urgent', '+') --}}
-                    <th width="1%"></th>
+                    <th width="1%" style="margin-right: 20px !important"></th>
                     <th width="4%">№</th>
                     <th width="24%">Наименование</th>
                     <th width="12%">Категория</th>
@@ -49,40 +56,11 @@
                 </tr>
             </thead>
             <tbody></tbody>
-            @if(false)
-            @foreach ($products as $product)
-            <tr>
-                <td><strong>{{ $product->is_urgent }}</strong></td>
-                <td><strong>{{ $product->id }}</strong></td>
-                <td class="product-name underlined">{{ $product->name }}</td>
-                <td class="p-text-color">{{ $product->medicamentsCategory->name }}</td>
-                <td><strong>{{ $product->unit }}.</strong></td>
-                <td><strong>{{ $product->quantity }}</strong></td>
-                <td><strong>{{ $product->reserve }}</strong></td>
-                <td><strong>{{ $product->free }}</strong></td>
-                <td class="warehouse-table-icon undefined_object"></td>
-                <td class="warehouse-table-icon increase_request"></td>
-                <td class="warehouse-table-icon logs"></td>
-                <td>
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                        {{-- <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Изменить</a> --}}
-                        <a class="btn btn-secondary px-4 disabled" href="{{ route('products.my_warehouse', $product->id) }}">Переместить</a>
-                        @csrf
-                        @method('DELETE')
-        
-                        {{-- <button type="submit" class="btn btn-danger">Удалить</button> --}}
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-            @endif
         </table>
         @else
             <h3>Нет созданных товаров.</h3>
         @endif
 
-        {!! $products->appends(['sort' => 'id'])->links() !!}
-        
     </div>
       
 @endsection
@@ -97,32 +75,40 @@
                    }
             });
 
-            let otable = $('#warehouse-table').DataTable({
+            let otable = $('#warehouse-table').DataTable({  
             ajax: {
-                url: "{{ route('products.datatable') }}",
+                url: "{!! route('products.datatable') !!}",
                 type: 'POST',
+                data: function(d){
+                    const dataArray = $('#product-filter').serializeArray();
+                    $(dataArray).each(function(i, field){
+                        d[field.name] = field.value;   
+                    });
+                }
             },
             pageLength: 10,
             processing: true,
             serverSide: true,
-            bPaginate: false,
-            sPaginationType: "full_numbers",
+            bPaginate: true,
+            lengthChange: false,
             responsive: true,  
             searching: false,  
-            // dom: 'lrtp', // uncheck if need to search & remove searching attribute
+            ordering:false,
+            info: false,
+
             columns: [
                 {data: 'is_urgent'},
-                {data: 'id', orderable: false},
-                {data: 'name', orderable: false, className: 'product-name underlined'},
-                {data: 'category_id', orderable: false, className: 'p-text-color'},
-                {data: 'unit', orderable: false, className: "font-weight-bold"},
-                {data: 'quantity', orderable: false, className: "font-weight-bold"},
-                {data: 'reserve', orderable: false, className: "font-weight-bold"},
-                {data: 'free', orderable: false, className: "font-weight-bold"},
-                {data: 'undefined_object', orderable: false},
-                {data: 'increase_request', orderable: false},
-                {data: 'logs', orderable: false},
-                {data: 'move_button', orderable: false},
+                {data: 'id'},
+                {data: 'name', className: 'product-name underlined'},
+                {data: 'category_id', className: 'p-text-color'},
+                {data: 'unit', className: "font-weight-bold"},
+                {data: 'quantity', className: "font-weight-bold"},
+                {data: 'reserve', className: "font-weight-bold"},
+                {data: 'free', className: "font-weight-bold"},
+                {data: 'undefined_object'},
+                {data: 'increase_request'},
+                {data: 'logs'},
+                {data: 'move_button'},
 
             ],
             columnDefs: [
@@ -135,7 +121,23 @@
                 }
             ],
         });
+        $('#warehouse-table ul').addClass("pagination-sm");
+        $('#search-products').click(function (e) {
+                e.preventDefault();
+                if (typeof otable === "object") {
+                    otable.ajax.reload();
+                }
+            if (typeof otable === "undefined") {
+                    pagefunction();
+                }
+            });
+
+             
+        $('#reset_search').click(function (e) {
+            e.preventDefault();
+            $('#product-filter').find("input[type=text], textarea ,select").val("");
+            otable.ajax.reload();
+        });
     });
       </script>
-
 @endsection

@@ -13,12 +13,12 @@
                 <div class="row">
                     <div class="col-md-10">
                         <div class="form-group">
-                            <input type="text" disabled value="{{ $product->product->name }}" class="form-control border border-dark rounded-0"">
+                            <input type="text" disabled value="{{ $product->product->name }}" class="form-control border border-dark rounded-0">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
-                            <input type="text" disabled value="{{ $answer->quantity }} шт." class="form-control border border-dark rounded-0"">
+                            <input type="text" disabled value="{{ $answer->quantity }} шт." class="form-control border border-dark rounded-0">
                         </div>
                     </div>
                 </div>

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\ProductFilter;
 use App\Models\MedicamentsCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -18,31 +18,25 @@ class ProductController extends Controller
      */
     public function myWarehouse()
     {
-        $products = Product::where('fund_id', Auth::user()->fund_id)->sortable('id')->paginate(5);
+        $products = Product::where('fund_id', Auth::user()->fund_id)->get();
 
-        return view('warehouse.my_warehouse', compact('products'))->with((request()->input('page', 1) - 1) * 5);
+        return view('warehouse.my_warehouse', compact('products'));
     }
 
     public function allWarehouses()
     {
-        $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->latest()->paginate(5);
-
-        return view('warehouse.all_warehouses', compact('products'))->with((request()->input('page', 1) - 1) * 5);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function datatable()
-    {
         $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->get();
 
+        return view('warehouse.all_warehouses', compact('products'));
+    }
+
+    public function datatable(ProductFilter $productFilter)
+    {
+        $query = Product::filter($productFilter)->where('fund_id', Auth::user()->fund_id);
+
+        $products = $query->orderBy('id', 'desc')->get();
+
         return Datatables::of($products)
-                         ->editColumn('name', function ($products) {
-                             return $products->medicamentsCategory->name;
-                         })
                          ->editColumn('category_id', function ($products) {
                              return $products->medicamentsCategory->name;
                          })
@@ -64,6 +58,31 @@ class ProductController extends Controller
                              ])->render();
                          })
                          ->rawColumns(['undefined_object','increase_request','logs'])
+                         ->make(true);
+    }
+
+    public function allWarehousesDatatable(ProductFilter $productFilter)
+    {
+        $query = Product::filter($productFilter)->where('fund_id', '!=', Auth::user()->fund_id);
+
+        $products = $query->orderBy('id', 'desc')->get();
+
+        return Datatables::of($products)
+                         ->editColumn('category_id', function ($products) {
+                             return $products->medicamentsCategory->name;
+                         })
+                         ->editColumn('fund_id', function ($products) {
+                             return view('warehouse.buttons.fund_and_address', [
+                                 'fundName' => $products->fund->name,
+                                 'fundAddress' => $products->fund->address,
+                             ]);
+                         })
+                         ->addColumn('request_product', function ($products) {
+                             return view('warehouse.buttons.request_product', [
+                                'id' => $products->id
+                            ])->render();
+                         })
+                         ->rawColumns(['fund_id'])
                          ->make(true);
     }
 

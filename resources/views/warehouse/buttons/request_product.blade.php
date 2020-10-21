@@ -1,0 +1,1 @@
+<a class="btn btn-secondary px-4 disabled" href="{{ route('products.my_warehouse', $id) }}">Запросить</a>

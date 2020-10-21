@@ -1,0 +1,1 @@
+<strong>{{ $fundName ?? '-'}}</strong><p class="p-text-color mt-n1">{{ $fundAddress ?? '' }}</p>
