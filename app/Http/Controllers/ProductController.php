@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,28 @@ class ProductController extends Controller
         $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->latest()->paginate(5);
 
         return view('warehouse.all_warehouses', compact('products'))->with((request()->input('page', 1) - 1) * 5);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function datatable(Request $request)
+    {
+        $products = Product::where('fund_id', '!=', Auth::user()->fund_id)->get();
+
+        return Datatables::of($products)
+        ->addIndexColumn()
+   
+        ->addColumn('action', function ($row) {
+            $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+            return $btn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+        ;
     }
 
     /**

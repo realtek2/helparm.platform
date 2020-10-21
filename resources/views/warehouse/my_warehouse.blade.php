@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('custom_css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+@endsection
 @section('content')
     <div class="container">
         @include('warehouse.topbar')
@@ -27,22 +29,32 @@
             </div>
         @endif
 
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" name="email" class="form-control searchEmail" placeholder="Search for Email Only...">
+            </div>
+        </div>
+
         @if ($products->count())
-        <table class="table warehouse-table">
-            <tr>
-                <th width="4%">@sortablelink('is_urgent', '+')</th>
-                <th width="4%">№</th>
-                <th width="24%">Наименование</th>
-                <th width="12%">Категория</th>
-                <th width="8%">Ед. изм.</th>
-                <th width="8%">Остаток</th>
-                <th width="8%">Резеерв</th>
-                <th width="8%">Свободно</th>
-                <th width="4%"></th>
-                <th width="4%"></th>
-                <th width="4%"></th>
-                <th width="8%"></th>
-            </tr>
+        <table class="table warehouse-table" id="warehouse-table">
+            <thead>
+                <tr>
+                    <th width="4%">@sortablelink('is_urgent', '+')</th>
+                    <th width="4%">№</th>
+                    <th width="24%">Наименование</th>
+                    <th width="12%">Категория</th>
+                    <th width="8%">Ед. изм.</th>
+                    <th width="8%">Остаток</th>
+                    <th width="8%">Резеерв</th>
+                    <th width="8%">Свободно</th>
+                    <th width="4%"></th>
+                    <th width="4%"></th>
+                    <th width="4%"></th>
+                    <th width="8%"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            @if(false)
             @foreach ($products as $product)
             <tr>
                 <td><strong>{{ $product->is_urgent }}</strong></td>
@@ -68,6 +80,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </table>
         @else
             <h3>Нет созданных товаров.</h3>
@@ -77,4 +90,44 @@
         
     </div>
       
+@endsection
+
+@section('custom_script')
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js" defer></script>
+    <script type="text/javascript">
+        $(function () {
+         
+          var table = $('#warehouse-table').DataTable({
+              processing: true,
+              serverSide: false,
+              ajax: {
+                url: "{{ route('products.datatable') }}",
+                data: function (d) {
+                      d.email = $('.searchEmail').val(),
+                      d.search = $('input[type="search"]').val()
+                  }
+              },
+              columns: [
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'name', name: 'name'},
+                  {data: 'action', name: 'action', orderable: false, searchable: false},
+              ]
+          });
+         
+          $(".searchEmail").keyup(function(){
+              table.draw();
+          });
+        
+        });
+      </script>
+
 @endsection
