@@ -15,7 +15,7 @@ class InquirySeeder extends Seeder
         $inquiries = [
             [
                 'name' => 'Бинты',
-                'fund_id' => null,
+                'fund_id' => 1,
                 'created_by_fund' => 1,
                 'category_id' => 1,
                 'request_to_all' => 1,

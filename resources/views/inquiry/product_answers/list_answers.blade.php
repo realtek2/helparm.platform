@@ -44,11 +44,11 @@
         @endif
     </div>
 
-    <div class="col-md-3 text-center align-self-center statusBlock">
-        <a id="accept" class="btn answers-button success px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
+    <div class="col-md-3 text-center align-self-center statusBlock-{{ $answer->id }}">
+        <a id="accept-{{ $answer->id }}" class="btn answers-button success px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
     </div>
     
-    <div style="display: none" class="col-md-2 ml-3 text-center align-self-center deliveryBlock">
+    <div style="display: none" class="col-md-2 ml-3 text-center align-self-center deliveryBlock-{{ $answer->id }}">
         <span>
             <a id="delivered" class="btn answers-button success px-5 disabled" href="#">Доставлен</a>
         </span>
@@ -63,43 +63,38 @@
     </div> --}}
     
 </div>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 @if($answer->delivery_status === App\Models\Answer::DELIVERY_ASNWER_CONFIRMED)
-    @section('custom_script')
-        <script>
-            $(window).on('load', function(){
-                $('.deliveryBlock').css('display', 'block');
-                $('.statusBlock').hide();
-            });
-        </script>
-    @endsection
+    <script>
+        $(window).on('load', function(){
+            $('.deliveryBlock-{{ $answer->id }}').css('display', 'block');
+            $('.statusBlock-{{ $answer->id }}').hide();
+        });
+    </script>
 @elseif($answer->delivery_status === App\Models\Answer::DELIVERED)
-    @section('custom_script')
-        <script>
-            $(window).on('load', function(){
-                $('.deliveredBlock').css('display', 'inherit');
-            });
-        </script>
-    @endsection
-
-@section('custom_script')
+    <script>
+        $(window).on('load', function(){
+            $('.deliveredBlock-{{ $answer->id }}').css('display', 'inherit');
+        });
+    </script>
+@endif
+@if($answer->delivery_status === App\Models\Answer::WAITING_FOR_CONFIRMATION_DELIVERY)
     <script>
         $(document).ready(function(){
-            $('#accept').on('click', function(e){
+            $('#accept-{{ $answer->id }}').on('click', function(e){
                 e.preventDefault();
                 $.ajax({
                     url: "{{ route('answer.accept_answer', ['id' => $answer->id]) }}",
                     type: 'GET',
                     dataType: 'JSON',
                     success:function(){
-                        $('.statusBlock').hide();
-                        $('.deliveryBlock').show();
+                        $('.statusBlock-{{ $answer->id }}').hide();
+                        $('.deliveryBlock-{{ $answer->id }}').show();
                     }
                 });
             });
         });
     </script>
-@endsection
 @endif
 @empty
     <h2>Ответов нет</h2>
