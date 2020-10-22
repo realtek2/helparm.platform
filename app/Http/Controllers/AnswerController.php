@@ -70,12 +70,19 @@ class AnswerController extends Controller
         $answer = Answer::findOrfail($answerId);
         $answer->delivery_status = Answer::DELIVERY_ASNWER_CONFIRMED;
         $answer->save();
-
-        return response()->json([
-            'type'    => 'success',
-            'message' => 'Ответ на запрос принят',
-        ]);
     }
+
+    public function sentDelivery($answerId, Request $request)
+    {
+        $answer = Answer::findOrfail($answerId);
+        $answer->delivery_status = Answer::DELIVERY_SENT;
+        
+        $answer->delivery_sent_date = $request->delivery_sent_date;
+        $answer->save();
+
+        return back();
+    }
+  
     /**
      * Display the specified resource.
      *

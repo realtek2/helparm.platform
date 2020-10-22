@@ -17,10 +17,42 @@
             <div class="col-md-9 pr-4">
                 <div class="float-left">
                     <ul class="list-inline">
-                        <li class="list-inline-item mr-4"><h4><strong>Все</strong></h4></li>
-                        <li class="list-inline-item mr-4 p-text-color"><h4>Новые запросы</h4></li>
-                        <li class="list-inline-item mr-4 p-text-color"><h4>В работе</h4></li>
-                        <li class="list-inline-item mr-4 p-text-color"><h4>Архив</h4></li>
+                        <li class="list-inline-item mr-4">
+                            <h4>
+                                <a href="{{ route('inquiries.index') }}" 
+                                   class="{{ Request::url('inquiries.index') === route('inquiries.index') ? 'font-weight-bold text-dark' : '' }}"
+                                   >
+                                    Все
+                                </a>
+                            </h4>
+                        </li>
+                        <li class="list-inline-item mr-4 p-text-color">
+                            <h4>
+                                <a href="{{ route('inquiries.new_inquiries') }}"
+                                   class="{{ Request::url('inquiries.new_inquiries') === route('inquiries.new_inquiries') ? 'font-weight-bold text-dark' : '' }}"
+                                >
+                                    Новые запросы
+                                </a>
+                            </h4>
+                        </li>
+                        <li class="list-inline-item mr-4 p-text-color">
+                            <h4>
+                                <a href="{{ route('inquiries.in_process') }}"
+                                   class="{{ Request::url('inquiries.in_process') === route('inquiries.in_process') ? 'font-weight-bold text-dark' : '' }}"
+                                >
+                                    В работе
+                                </a>
+                            </h4>
+                        </li>
+                        <li class="list-inline-item mr-4 p-text-color">
+                            <h4>
+                                <a href="{{ route('inquiries.archived') }}"
+                                   class="{{ Request::url('inquiries.archived') === route('inquiries.archived') ? 'font-weight-bold text-dark' : '' }}"
+                                >
+                                    Архив
+                                </a>
+                            </h4>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -75,7 +107,9 @@
                 @endforeach
             </div>
             @else
-            <h3>Нет запросов.</h3>
+            <div class="col">
+                <h3>Нет запросов.</h3>
+            </div>
             @endif
         </div>
         {!! $inquiries->links() !!}

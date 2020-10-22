@@ -45,6 +45,33 @@ class MedicamentInquiryController extends Controller
              ->with((request()->input('page', 1) - 1) * 5);
     }
 
+    public function newInquiries()
+    {
+        $inquiries = MedicamentInquiry::where('status', MedicamentInquiry::NEW_INQUIRY)->latest()->paginate(10);
+        $answers = Answer::all();
+        
+        return view('inquiry.index', compact('inquiries', 'answers'))
+             ->with((request()->input('page', 1) - 1) * 5);
+    }
+
+    public function inProcess()
+    {
+        $inquiries = MedicamentInquiry::where('status', MedicamentInquiry::IN_PROCESS)->latest()->paginate(10);
+        $answers = Answer::all();
+        
+        return view('inquiry.index', compact('inquiries', 'answers'))
+             ->with((request()->input('page', 1) - 1) * 5);
+    }
+
+    public function archived()
+    {
+        $inquiries = MedicamentInquiry::where('status', MedicamentInquiry::ARCHIVED)->latest()->paginate(10);
+        $answers = Answer::all();
+        
+        return view('inquiry.index', compact('inquiries', 'answers'))
+             ->with((request()->input('page', 1) - 1) * 5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

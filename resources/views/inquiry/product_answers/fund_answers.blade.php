@@ -13,12 +13,12 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <input type="text" disabled value="{{ $product->product->name }}" class="form-control border border-dark rounded-0"">
+                                <input type="text" disabled value="{{ $product->product->name }}" class="form-control border border-dark rounded-0">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <input type="text" disabled value="{{ $answer->quantity }} шт." class="form-control border border-dark rounded-0"">
+                                <input type="text" disabled value="{{ $answer->quantity }} шт." class="form-control border border-dark rounded-0">
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,18 @@
                         <span class="text-color">Общее кол-во <p>{{ $answer->quantity }} шт.</p></span>
                     </div>
                     <div class="col-md-6">
-                        <span class="text-color">Дата отправления <p><strong>{{ $answer->delivery_date ?? ' - ' }}</strong></p></span>
+                        @if($answer->delivery_status === $answer::DELIVERY_ASNWER_CONFIRMED)
+                        <form action="">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="delivery_sent_date" class="form-control border border-dark rounded-0"  placeholder="Введите дату отправки">
+                            </div>
+                        </form>
+                        @elseif($answer->delivery_status === $answer::DELIVERY_SENT)
+                        <span class="text-color">Дата отправления <p><strong>{{ $answer->delivery_sent_date->format('d-m-Y') }}</strong></p></span>
+                        @else
+                        <span class="text-color">Дата отправления <p><strong> - </strong></p></span>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -52,8 +63,42 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 text-center align-self-center">
-            <h5>Ожидание <br>подтверждения</h5>
+        <div class="col-md-2 text-center align-self-center" id="sent_delivery_block">
+            @if($answer->delivery_status === $answer::DELIVERY_ASNWER_CONFIRMED)
+                <a href="{{ route('answer.sent_delivery', ['answerId' => $answer->id]) }}" id="sentDelivery" class="btn answers-button success px-5">Отправить</a>
+            @elseif($answer->delivery_status === $answer::DELIVERY_SENT)
+                <h5>Отправлено <br><p class="p-text-color">Дата отправления</p>{{ $answer->delivery_sent_date->format('d-m-Y') }}</h5>
+            @else
+                <h5>Ожидание <br>подтверждения</h5>
+            @endif
         </div>
     </div>
 @endforeach
+
+@section('custom_script')
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+            });
+            $('#sentDelivery').on('click', function(e){
+                e.preventDefault();
+                var delivery_sent_date = $('input[name=delivery_sent_date]').val();
+                let _token   = $('meta[name="csrf-token"]').attr('content');
+                
+                $.ajax({
+                    url: "{{ route('answer.sent_delivery', ['answerId' => $answer->id]) }}",
+                    type: 'POST',
+                    data: {
+                        delivery_sent_date: delivery_sent_date,
+                        _token: _token},
+                    success:function(data){
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+@endsection

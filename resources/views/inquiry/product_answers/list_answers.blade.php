@@ -45,7 +45,7 @@
     </div>
 
     <div class="col-md-3 text-center align-self-center statusBlock-{{ $answer->id }}">
-        <a id="accept-{{ $answer->id }}" class="btn answers-button success px-5" href="{{ route('answer.accept_answer', ['id' => $answer->id]) }}">Принять</a>
+        <a id="accept-{{ $answer->id }}" class="btn answers-button success px-5" href="{{ route('answer.accept_answer', ['answerId' => $answer->id]) }}">Принять</a>
     </div>
     
     <div style="display: none" class="col-md-2 ml-3 text-center align-self-center deliveryBlock-{{ $answer->id }}">
@@ -84,7 +84,7 @@
             $('#accept-{{ $answer->id }}').on('click', function(e){
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ route('answer.accept_answer', ['id' => $answer->id]) }}",
+                    url: "{{ route('answer.accept_answer', ['answerId' => $answer->id]) }}",
                     type: 'GET',
                     dataType: 'JSON',
                     success:function(){

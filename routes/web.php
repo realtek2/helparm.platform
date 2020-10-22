@@ -28,8 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('funds', 'FundController');
-
+    // Medicament Inquiries
     Route::resource('inquiries', 'MedicamentInquiryController');
+    Route::get('inquiries\new_inquiries', 'MedicamentInquiryController@newInquiries')->name('inquiries.new_inquiries');
+    Route::get('inquiries\in_process', 'MedicamentInquiryController@inProcess')->name('inquiries.in_process');
+    Route::get('inquiries\archived', 'MedicamentInquiryController@archived')->name('inquiries.archived');
 
     // Products
     Route::resource('products', 'ProductController', ['except' => ['index']]);
@@ -47,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Answers
     Route::get('/answer/create', 'ProductAnswerController@create')->name('answer.form.create');
     Route::post('/inquiries/{inquiryId}/answer/store', 'AnswerController@store')->name('answer.store');
-    Route::get('answer/{id}/accept_answer', 'AnswerController@acceptAnswer')->name('answer.accept_answer');
     Route::delete('answer/{id}/delete', 'AnswerController@destroy')->name('answer.destroy');
+
+    Route::get('answer/{answerId}/accept_answer', 'AnswerController@acceptAnswer')->name('answer.accept_answer');
+    Route::post('answer/{answerId}/sent_delivery', 'AnswerController@SentDelivery')->name('answer.sent_delivery');
 });
