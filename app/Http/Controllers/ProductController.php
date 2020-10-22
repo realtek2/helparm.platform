@@ -84,7 +84,7 @@ class ProductController extends Controller
                          ->editColumn('fund_id', function ($products) {
                              return view('warehouse.buttons.fund_and_address', [
                                  'fundName' => $products->fund->name,
-                                 'fundAddress' => $products->fund->address,
+                                 'fundAddress' => $products->fund->country . ' ' . $products->fund->city,
                              ]);
                          })
                          ->addColumn('request_product', function ($products) {

@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
 use App\Models\Fund;
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class FundController extends Controller
 {
@@ -100,7 +96,8 @@ class FundController extends Controller
     {
         return request()->validate([
             'name' => 'required',
-            'address' => 'required',
+            'country' => 'required',
+            'city' => 'required',
             'email' => 'required',
             'number' => 'required',
             'description' => 'nullable',

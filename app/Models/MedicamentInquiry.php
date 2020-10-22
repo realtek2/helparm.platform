@@ -25,7 +25,7 @@ class MedicamentInquiry extends Model
     public const STATUSES = [
         self::NEW_INQUIRY => 'Новый',
         self::IN_PROCESS => 'В процессе',
-        self::ARCHIVED => 'В архиве',
+        self::ARCHIVED => 'Архив',
     ];
 
     public function medicamentsCategory()

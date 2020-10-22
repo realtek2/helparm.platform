@@ -23,6 +23,16 @@ class MedicamentInquiryController extends Controller
         $answers = Answer::all();
         $inquiries = MedicamentInquiry::latest()->paginate(5);
     
+        foreach ($inquiries as $inquiry) {
+            $two_weeks_inquiries = $inquiry->where('created_at', '<=', now()->subDays(14))->get();
+            if ($two_weeks_inquiries->count() >= 1) {
+                foreach ($two_weeks_inquiries as $two_weeks_inquiry) {
+                    $two_weeks_inquiry->status = 2;
+                    $two_weeks_inquiry->save();
+                }
+            }
+        }
+
         return view('inquiry.index', compact('inquiries', 'answers'))
              ->with((request()->input('page', 1) - 1) * 5);
     }

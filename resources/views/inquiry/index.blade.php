@@ -18,7 +18,7 @@
                 <div class="float-left">
                     <ul class="list-inline">
                         <li class="list-inline-item mr-4"><h4><strong>Все</strong></h4></li>
-                        <li class="list-inline-item mr-4 p-text-color"><h4>Активные</h4></li>
+                        <li class="list-inline-item mr-4 p-text-color"><h4>Новые запросы</h4></li>
                         <li class="list-inline-item mr-4 p-text-color"><h4>В работе</h4></li>
                         <li class="list-inline-item mr-4 p-text-color"><h4>Архив</h4></li>
                     </ul>
@@ -32,10 +32,21 @@
                 <div class="inquiries-block border p-4 mb-4">
                     <div class="row">
                         <div class="col-md-10">
-                            <span class="p-text-color">ID-{{ $inquiry->id }} / {{ $inquiry->medicamentsCategory->name }} / {{ $inquiry->createdByFund->address }}</span>
+                            <span class="p-text-color">ID-{{ $inquiry->id }} | {{ $inquiry->medicamentsCategory->name }} | {{ $inquiry->createdByFund->city }}</span>
                         </div>
-                        <div class="col lead">
-                            <h3 class="badge badge-olives float-right" style="font-weight: 400">В работе</h3>
+                        <div class="col lead m-n4">
+                            @switch($inquiry::STATUSES)
+                                @case($inquiry->status === $inquiry::NEW_INQUIRY)
+                                    <h3 class="badge-custom new float-right" style="font-weight: 400">Новый</h3>
+                                    @break
+                                @case($inquiry->status === $inquiry::IN_PROCESS)
+                                    <h3 class="badge-custom in_process float-right" style="font-weight: 400">В процессе</h3>
+                                    @break
+                                @case($inquiry->status === $inquiry::ARCHIVED)
+                                    <h3 class="badge-custom archived float-right" style="font-weight: 400">Архив</h3>
+                                    @break
+                                @default
+                            @endswitch
                         </div>
                     </div>
                     <div class="row pt-3">

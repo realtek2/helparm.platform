@@ -43,14 +43,20 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Адрес:</strong>
-                    <input type="text" name="address" class="form-control" required value="{{ $fund->address }}" placeholder="Адрес">
+                    <strong>Страна:</strong>
+                    <input type="text" name="country" class="form-control" required value="{{ $fund->country }}" placeholder="Страна">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Город:</strong>
+                    <input type="text" name="city" class="form-control" required value="{{ $fund->city }}" placeholder="Город">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Телефон:</strong>
-                    <input type="text" name="number" class="form-control" required value="{{ $fund->address }}" placeholder="Телефон">
+                    <input type="text" name="number" class="form-control" required value="{{ $fund->number }}" placeholder="Телефон">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

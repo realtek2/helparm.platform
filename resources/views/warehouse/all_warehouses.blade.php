@@ -49,7 +49,7 @@
                 <td><strong>{{ $product->id }}</strong></td>
                 <td class="product-name">{{ $product->name }}</td>
                 <td class="p-text-color">{{ $product->medicamentsCategory->name }}</td>
-                <td class="pb-0"><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color mt-n1">{{ $product->fund->address }}</p></td>
+                <td class="pb-0"><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color mt-n1">{{ $product->fund->country }} | {{ $product->fund->city }}</p></td>
                 <td><strong>{{ $product->unit }}.</strong></td>
                 <td><strong>{{ $product->quantity }}</strong></td>
                 <td><strong>{{ $product->reserve }}</strong></td>

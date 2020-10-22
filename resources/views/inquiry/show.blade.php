@@ -39,7 +39,18 @@
         <div class="col-md-3">
             <div class="status-inquiry-block px-3 py-4">
                 <div class="col-md-12 mb-4 mt-2">
-                    <span class="badge-new-status">Новый</span>
+                    @switch($inquiry::STATUSES)
+                        @case($inquiry->status === $inquiry::NEW_INQUIRY)
+                            <span class="badge-show new">Новый</span>
+                            @break
+                        @case($inquiry->status === $inquiry::IN_PROCESS)
+                            <span class="badge-show in_process">В процессе</span>
+                            @break
+                        @case($inquiry->status === $inquiry::ARCHIVED)
+                            <span class="badge-show archived">Архив</span>
+                            @break
+                        @default
+                    @endswitch
                 </div>
                 <div class="col-md-12 mb-2">
                     <h3 class="mb-0"><strong>{{ number_format($inquiry->quantity, 0, '.', ' ') }} шт.</strong></h3>

@@ -11,7 +11,8 @@ class Fund extends Model
     protected $fillable = [
         'name',
         'description',
-        'address',
+        'country',
+        'city',
         'number',
         'email'
     ];

@@ -3,7 +3,7 @@
     <div class="col-md-1 example-logo"></div>
     <div class="col-md-8 pr-4 border-right">
         <div class="col">
-            <span class="p-text-color">Представительство - {{ $answer->fund->address }}</span>
+            <span class="p-text-color">Представительство - {{ $answer->fund->city }}</span>
         </div>
         <div class="col mt-2 mb-4">
             <h2><strong>{{ $answer->fund->name }}</strong></h2>

@@ -39,7 +39,7 @@
                     <div class="col-md-3">
                         <div class="col-md-12">
                             <h3><strong>{{ $fund->name }}</strong></h3>
-                            <p class="p-text-color">{{ $fund->address }}</p>
+                            <p class="p-text-color">{{ $fund->country }} / {{ $fund->city }}</p>
                         </div>
                         <div class="col-md-12">
                             <a href="mailto:{{ $fund->email }}">{{ $fund->email }}</a>

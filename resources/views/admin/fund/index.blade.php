@@ -35,7 +35,7 @@
                 <td>{{ $fund->id }}</td>
                 <td>{{ $fund->name }}</td>
                 <td>{{ $fund->description ?? '-'}}</td>
-                <td>{{ $fund->address }}</td>
+                <td>{{ $fund->country }} / {{ $fund->city }}</td>
                 <td>{{ $fund->number }}</td>
                 <td>{{ $fund->email }}</td>
                 <td>

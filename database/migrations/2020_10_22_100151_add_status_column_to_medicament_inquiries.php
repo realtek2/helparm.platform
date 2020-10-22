@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCreatedByFundColumnToMedicamentInquiriesTable extends Migration
+class AddStatusColumnToMedicamentInquiries extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddCreatedByFundColumnToMedicamentInquiriesTable extends Migration
     public function up()
     {
         Schema::table('medicament_inquiries', function (Blueprint $table) {
-            $table->foreignId('created_by_fund')->nullable()->before('fund_id')->constrained('funds')->nullOnDelete()->after('fund_id');
+            $table->integer('status')->default(1)->after('name');
         });
     }
 
@@ -26,8 +26,7 @@ class AddCreatedByFundColumnToMedicamentInquiriesTable extends Migration
     public function down()
     {
         Schema::table('medicament_inquiries', function (Blueprint $table) {
-            $table->dropForeign(['created_by_fund']);
-            $table->dropColumn('created_by_fund');
+            $table->dropColumn('status');
         });
     }
 }

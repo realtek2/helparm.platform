@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <h1><strong>{{ $fund->name }}</strong></h1>
-                    <p class="p-text-color mt-n2">{{ $fund->address }}</p>
+                    <p class="p-text-color mt-n2">{{ $fund->country }} / {{ $fund->city }}</p>
                 </div>
                 <div class="col-md-2 mt-1">
                     <p class="p-text-color">Телефон:</p>

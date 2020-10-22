@@ -24,7 +24,6 @@
             <tr>
                 <th>ID</th>
                 <th>Имя</th>
-                <th>Описание</th>
                 <th>Фонд</th>
                 <th>Количество</th>
                 <th>Категория</th>
@@ -35,7 +34,6 @@
             <tr>
                 <td>ID-{{ $inquiry->id }}</td>
                 <td>{{ $inquiry->name }}</td>
-                <td>{{ $inquiry->description ?? ''}}</td>
                 <td>{{ $inquiry->fund->name ?? 'Всем' }}</td>
                 <td>{{ $inquiry->quantity }}</td>
                 <td>{{ $inquiry->medicamentsCategory->name ?? 'Медикаменты' }}</td>

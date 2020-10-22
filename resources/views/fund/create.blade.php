@@ -42,8 +42,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Адрес:</strong>
-                    <input type="text" name="address" class="form-control" placeholder="Адрес">
+                    <strong>Страна:</strong>
+                    <input type="text" name="country" class="form-control" placeholder="Страна">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Город:</strong>
+                    <input type="text" name="city" class="form-control" placeholder="Горож">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

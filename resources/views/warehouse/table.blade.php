@@ -11,7 +11,7 @@
     <tr>
         <td><strong>{{ $product->id }}</strong></td>
         <td class="p-text-color">{{ $product->name }}</td>
-        <td><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color">{{ $product->fund->address }}</p></td>
+        <td><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color">{{ $product->fund->country }} |  {{ $product->fund->city }}</p></td>
         <td><strong>{{ $product->medicamentsCategory->name }}</strong></td>
         <td><strong>{{ $product->quantity }} шт.</strong></td>
         <td>
