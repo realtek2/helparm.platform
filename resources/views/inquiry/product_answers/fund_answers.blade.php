@@ -48,16 +48,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-3 ml-2">
                 <div class="col-md-4">
-                    <h5><a href="#"><i class="fas fa-pen mr-3"></i>Редактировать</a></h5>
+                    <h5><a href="#" class="edit-button"><i class="fas fa-pen mr-3"></i>Редактировать</a></h5>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 ml-n5 pl-0">
                     <h5>
                         <form action="{{ route('answer.destroy', ['id' => $answer_id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="#"><i class="fas fa-times mr-3"></i>Удалить ответ</a>
+                            <button type="submit" class="delete-button"><i class="fas fa-times mr-3"></i>Удалить ответ</button>
                         </form>
                     </h5>
                 </div>
