@@ -13,6 +13,7 @@ class MedicamentInquiry extends Model
         'description',
         'request_to_all',
         'quantity',
+        'status',
         'category_id',
         'fund_id',
         'created_by_fund'

@@ -21,7 +21,7 @@ class MedicamentInquiryController extends Controller
     public function index()
     {
         $answers = Answer::all();
-        $inquiries = MedicamentInquiry::latest()->paginate(5);
+        $inquiries = MedicamentInquiry::latest()->paginate(10);
     
         foreach ($inquiries as $inquiry) {
             $two_weeks_inquiries = $inquiry->where('created_at', '<=', now()->subDays(14))->get();
@@ -34,15 +34,15 @@ class MedicamentInquiryController extends Controller
         }
 
         return view('inquiry.index', compact('inquiries', 'answers'))
-             ->with((request()->input('page', 1) - 1) * 5);
+             ->with((request()->input('page', 1) - 1) * 10);
     }
 
     public function list()
     {
-        $inquiries = MedicamentInquiry::latest()->paginate(5);
+        $inquiries = MedicamentInquiry::latest()->paginate(10);
 
         return view('admin.inquiry.index', compact('inquiries'))
-             ->with((request()->input('page', 1) - 1) * 5);
+             ->with((request()->input('page', 1) - 1) * 10);
     }
 
     public function newInquiries()
@@ -95,6 +95,7 @@ class MedicamentInquiryController extends Controller
     {
         $this->validateIquiry();
         $input = $request->all();
+        $input['status'] = $request->status;
         $input['created_by_fund'] = Auth::user()->fund_id;
         
         MedicamentInquiry::create($input);

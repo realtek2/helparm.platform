@@ -10,7 +10,7 @@
             </div>
             <div class="col">
                 <div class="float-right">
-                    <a class="btn btn-olives" href="{{ route('products.create') }}"><i class="fas fa-plus mr-2"></i>Добавить товар</a>
+                    <a class="btn btn-olives" href="{{ route('admin.warehouses.create') }}"><i class="fas fa-plus mr-2"></i>Добавить товар</a>
                 </div>
             </div>
         </div>

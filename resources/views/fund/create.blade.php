@@ -8,7 +8,7 @@
                 <h2>Добавление фонда</h2>
             </div>
             <div class="pull-right my-4">
-                <a class="btn btn-primary" href="{{ route('funds.index') }}"> Назад</a>
+                <a class="btn btn-primary" href="{{ redirect()->back()->getTargetUrl() }}"> Назад</a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Город:</strong>
-                    <input type="text" name="city" class="form-control" placeholder="Горож">
+                    <input type="text" name="city" class="form-control" placeholder="Город">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

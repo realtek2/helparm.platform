@@ -13,13 +13,21 @@ class FundController extends Controller
      */
     public function index()
     {
-        $funds = Fund::with('answers', 'products')->orderBy('id', 'asc')->latest()->paginate(5);
+        $funds = Fund::with('answers', 'products')->orderBy('id', 'desc')->latest()->paginate(10);
         
         return view('fund.index', [
             'funds' => $funds
-            ])->with((request()->input('page', 1) - 1) * 5);
+            ])->with((request()->input('page', 1) - 1) * 10);
     }
 
+    public function list()
+    {
+        $funds = Fund::with('answers', 'products')->orderBy('id', 'desc')->latest()->paginate(10);
+        
+        return view('admin.fund.index', [
+            'funds' => $funds
+            ])->with((request()->input('page', 1) - 1) * 10);
+    }
     /**
      * Show the form for creating a new resource.
      *

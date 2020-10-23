@@ -12,8 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('fund_id', '>', 0)->latest()->paginate(5);
-        return view('admin.user.index', compact('users'))->with((request()->input('page', 1) - 1) * 5);
+        $users = User::where('fund_id', '>', 0)->latest()->paginate(10);
+        return view('admin.user.index', compact('users'))->with((request()->input('page', 1) - 1) * 10);
     }
 
     public function create()

@@ -16,6 +16,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $products = Product::latest()->paginate(10);
+
+        return view('admin.warehouse.index', compact('products'))->with((request()->input('page', 1) - 1) * 10);
+    }
+
     public function myWarehouse()
     {
         $products = Product::where('fund_id', Auth::user()->fund_id)->get();
@@ -106,6 +113,13 @@ class ProductController extends Controller
         $categories = MedicamentsCategory::all();
         
         return view('warehouse.crud.create_modal', compact('categories'));
+    }
+
+    public function createView()
+    {
+        $categories = MedicamentsCategory::all();
+
+        return view('warehouse.crud.create', compact('categories'));
     }
 
     public function changeQuantity(Product $product)

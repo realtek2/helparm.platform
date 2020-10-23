@@ -98,7 +98,7 @@
                 }
             },
             pageLength: 10,
-            processing: true,
+            processing: false,
             serverSide: true,
             bPaginate: true,
             lengthChange: false,
@@ -129,6 +129,13 @@
                 },
                 { className: 'text-align-center', targets: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
             ],
+            language: {
+                emptyTable: "Таких товаров нет на складах.",
+                paginate: {
+                    next: "&#5171;",
+                    previous: "&#5176;"
+                }
+            }
         });
         
         $('#search-products').click(function (e) {

@@ -81,7 +81,7 @@
                             <button type="submit" class="btn btn-olives">Создать запрос</button>
                     </div>
                     <div class="col-auto mt-2">
-                        <a class="btn" href="{{ route('inquiries.index') }}"> Отмена</a>
+                        <a class="btn" href="{{ redirect()->back()->getTargetUrl() }}"> Отмена</a>
                     </div>
                 </div>
             </form>

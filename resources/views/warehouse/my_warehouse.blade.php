@@ -87,7 +87,7 @@
                 }
             },
             pageLength: 10,
-            processing: true,
+            processing: false,
             serverSide: true,
             bPaginate: true,
             lengthChange: false,
@@ -120,6 +120,13 @@
                     }
                 }
             ],
+            language: {
+                emptyTable: "Таких товаров нет на вашем складе.",
+                paginate: {
+                    next: "&#5171;",
+                    previous: "&#5176;"
+                }
+            }
         });
         $('#warehouse-table ul').addClass("pagination-sm");
         $('#search-products').click(function (e) {

@@ -20,10 +20,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::group(['prefix' => 'admin', 'as' => 'admin.' ], function () {
             Route::resource('users', 'UserController', ['except' => ['show']]);
-            Route::get('/', 'HomeController@admin');
-            Route::get('/inquiries', 'MedicamentInquiryController@list');
-            Route::get('/funds', 'FundController@index')->name('funds.index');
+            Route::get('/', 'HomeController@admin')->name('home');
+            Route::get('/inquiries', 'MedicamentInquiryController@list')->name('inquiries.index');
+            Route::get('/funds', 'FundController@list')->name('funds.index');
             Route::get('/warehouses', 'ProductController@index')->name('warehouses.index');
+            Route::get('/warehouses/create', 'ProductController@createView')->name('warehouses.create');
+            Route::get('/answers', 'AnswerController@index')->name('answers.index');
         });
     });
 

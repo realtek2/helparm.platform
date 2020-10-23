@@ -28,7 +28,7 @@
                 <th>Количество</th>
                 <th>Категория</th>
                 <th>Дата создания</th>
-                <th>Action</th>
+                <th width="338px"></th>
             </tr>
             @foreach ($inquiries as $inquiry)
             <tr>
@@ -40,7 +40,7 @@
                 <td>{{ $inquiry->created_at}}</td>
                 <td>
                     <form action="{{ route('inquiries.destroy', $inquiry->id) }}" method="POST">
-                        <a class="btn btn-info disabled" href="{{ route('inquiries.show', $inquiry->id) }}">Открыть запрос</a>
+                        <a class="btn btn-info" href="{{ route('inquiries.show', $inquiry->id) }}">Открыть запрос</a>
                         <a class="btn btn-primary" href="{{ route('inquiries.edit', $inquiry->id) }}">Изменить</a>
                         @csrf
                         @method('DELETE')

@@ -87,11 +87,23 @@
                                 <input type="text" name="quantity" onkeyup="this.value=this.value.replace(/[^\d]/,'')" value="{{ $inquiry->quantity }}" class="form-control border border-dark rounded-0"">
                             </div>
                         </div>
+                        @if(Auth::user()->is_admin)
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label>Статус запроса:</label>
+                                <select class="custom-select border border-dark rounded-0" required name="status">
+                                    @foreach ($inquiry::STATUSES as $key => $status)
+                                        <option @if($key == $inquiry->status) selected @endif value="{{ $key }}">{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        @endif
                         <div class="col-auto mt-2">
                                 <button type="submit" class="btn btn-olives">Редактировать запрос</button>
                         </div>
                         <div class="col-auto mt-2">
-                            <a class="btn" href="{{ route('inquiries.index') }}"> Отмена</a>
+                            <a class="btn" href="{{ redirect()->back()->getTargetUrl() }}"> Отмена</a>
                         </div>
                     </div>
                 </form>

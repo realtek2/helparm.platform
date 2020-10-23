@@ -8,7 +8,7 @@
                 <h2>Добавление пользователя</h2>
             </div>
             <div class="pull-right my-4">
-                <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Назад</a>
+                <a class="btn btn-primary" href="{{ redirect()->back()->getTargetUrl() }}"> Назад</a>
             </div>
         </div>
     </div>

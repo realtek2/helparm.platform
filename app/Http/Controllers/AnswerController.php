@@ -18,9 +18,9 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+        $answers = Answer::latest()->paginate(10);
+        return view('admin.answer.index', compact('answers'))->with((request()->input('page', 1) - 1) * 10);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -102,7 +102,7 @@ class AnswerController extends Controller
      */
     public function edit(Answer $answer)
     {
-        //
+        return view('admin.answer.edit', compact('answer'));
     }
 
     /**
