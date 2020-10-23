@@ -95,7 +95,7 @@ class MedicamentInquiryController extends Controller
     {
         $this->validateIquiry();
         $input = $request->all();
-        $input['status'] = $request->status;
+        $input['status'] = 1;
         $input['created_by_fund'] = Auth::user()->fund_id;
         
         MedicamentInquiry::create($input);
