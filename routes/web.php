@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('inquiries\new_inquiries', 'MedicamentInquiryController@newInquiries')->name('inquiries.new_inquiries');
     Route::get('inquiries\in_process', 'MedicamentInquiryController@inProcess')->name('inquiries.in_process');
     Route::get('inquiries\archived', 'MedicamentInquiryController@archived')->name('inquiries.archived');
+    Route::post('inquiries\{id}\close_inquiry', 'MedicamentInquiryController@closeInquiry')->name('inquiries.close_inquiry');
 
     // Products
     Route::resource('products', 'ProductController', ['except' => ['index']]);

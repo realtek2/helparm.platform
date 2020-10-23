@@ -108,9 +108,15 @@ body{
     font-weight: 700;
     width: 285px;
     height: 50px;
-    display: block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     margin: 0 auto;
     border: none;
+    &:hover{
+        color: #fff;
+        text-decoration: none;
+    }
 }
 .badge-custom {
     height: 34px;

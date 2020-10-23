@@ -64,25 +64,32 @@
                     <h3 class="mb-0"><strong>{{ $countDeliveredProducts->total ?? '0' }} шт.</strong></h3>
                     <p>Доставлено:</p>
                 </div>
+                @if($inquiry->status != $inquiry::ARCHIVED)
                 <div class="col-md-12 mt-5 mb-3">
-                    <button class="status-inquiry-block-button mt-3">ЗАКРЫТЬ ЗАПРОС</button>
+                    <form action="{{ route('inquiries.close_inquiry', ['id' => $inquiry->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="status-inquiry-block-button mt-3">ЗАКРЫТЬ ЗАПРОС</button>
+                    </form>
                 </div>
+                @endif
             </div>
             @if(Auth::user()->fund_id == $inquiry->fund_id)
-            <div class="row p-4">
-                <div class="col-md-12 ml-2 mt-3">
-                    <h5><i class="fas fa-pen mr-3"></i><a class="edit-button" href="{{ route('inquiries.edit', ['inquiry' => $inquiry]) }}">Редактировать</a></h5>
+                @if($inquiry->status != $inquiry::ARCHIVED)
+                <div class="row p-4">
+                    <div class="col-md-12 ml-2 mt-3">
+                        <h5><i class="fas fa-pen mr-3"></i><a class="edit-button" href="{{ route('inquiries.edit', ['inquiry' => $inquiry]) }}">Редактировать</a></h5>
+                    </div>
+                    <div class="col-md-12 ml-2 mt-3">
+                        <h5>
+                            <form action="{{ route('inquiries.destroy', ['inquiry' => $inquiry->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <i class="fas fa-times mr-3" style="color:#BDBDBD"></i><button class="delete-button" type="submit">Отменить запрос</button>
+                            </form>
+                        </h5>
+                    </div>
                 </div>
-                <div class="col-md-12 ml-2 mt-3">
-                    <h5>
-                        <form action="{{ route('inquiries.destroy', ['inquiry' => $inquiry->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <i class="fas fa-times mr-3" style="color:#BDBDBD"></i><button class="delete-button" type="submit">Отменить запрос</button>
-                        </form>
-                    </h5>
-                </div>
-            </div>
+                @endif
             @endif
         </div>
 

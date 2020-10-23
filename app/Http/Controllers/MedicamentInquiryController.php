@@ -188,6 +188,14 @@ class MedicamentInquiryController extends Controller
         return redirect(route('inquiries.index'))->with('success', 'Запрос удалён.');
     }
 
+    public function closeInquiry($id)
+    {
+        $inquiry = MedicamentInquiry::findOrFail($id);
+        $inquiry->status = MedicamentInquiry::ARCHIVED;
+        $inquiry->save();
+
+        return redirect(route('inquiries.index'));
+    }
     protected function validateIquiry()
     {
         return request()->validate([
