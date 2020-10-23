@@ -22,7 +22,7 @@
                 <p class="p-text-color">{{ $inquiry->description }}</p>
             </div>
             <div class="col-md-12">
-                <span><strong>Ответов:</strong></span><span class="badge badge-warning">{{ $answers->count() ?? '0' }}</span>
+                <span><strong>Ответов:</strong></span><span class="answers_count">{{ $answers->count() ?? '0' }}</span>
             </div>
             <hr class="col-md-12">
         @if ($inquiry->fund_id == Auth::user()->fund_id)

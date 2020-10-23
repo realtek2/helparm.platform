@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="col-auto mt-2">
-                <button type="submit" class="btn btn-olives">Отправить товары</button>
+                <button type="submit" class="status-inquiry-block-button">ОТПРАВИТЬ ТОВАРЫ</button>
             </div>
             {{-- <div class="col-md-12">
                 <a ajax_target="{{ route('answer.form.create') }}" href="javascript:void(0);" class="btn btn-success remote_modal">
