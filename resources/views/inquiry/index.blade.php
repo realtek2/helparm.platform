@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="row pt-3">
-                        <div class="col-md-8"><h3><strong><a href="{{ route('inquiries.show', ['inquiry' => $inquiry]) }}">{{ $inquiry->name }}</a></strong></h3></div>
+                        <div class="col-md-8"><h3><a class="text-dark" href="{{ route('inquiries.show', ['inquiry' => $inquiry]) }}">{{ $inquiry->name }}</a></h3></div>
                         <div class="col-md-2">
                             <span>Нужно:</span>
                             <p class="mt-n2 number_size">{{ number_format($inquiry->quantity, 0, '.', ' ') }} шт.</p>
@@ -100,7 +100,7 @@
                             <span class="ml-3"><a href="#"> {{ $inquiry->request_to_all == 0 ? $inquiry->fund->name : 'Общий запрос' }}</a></span>
                         </div>
                         <div class="col">
-                            <span><strong>Ответов:</strong></span><span class="badge badge-warning">{{ $answers->where('inquiry_id', $inquiry->id)->count() ?? '0' }}</span>
+                            <span><strong>Ответов:</strong></span><span class="answers_count">{{ $answers->where('inquiry_id', $inquiry->id)->count() ?? '0' }}</span>
                         </div>
                     </div>
                 </div>
