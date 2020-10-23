@@ -72,7 +72,7 @@
                                     <h3 class="badge-custom new float-right" style="font-weight: 400">Новый</h3>
                                     @break
                                 @case($inquiry->status === $inquiry::IN_PROCESS)
-                                    <h3 class="badge-custom in_process float-right" style="font-weight: 400">В процессе</h3>
+                                    <h3 class="badge-custom in_process float-right" style="font-weight: 400">В работе</h3>
                                     @break
                                 @case($inquiry->status === $inquiry::ARCHIVED)
                                     <h3 class="badge-custom archived float-right" style="font-weight: 400">Архив</h3>

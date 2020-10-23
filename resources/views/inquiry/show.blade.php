@@ -44,7 +44,7 @@
                             <span class="badge-show new">Новый</span>
                             @break
                         @case($inquiry->status === $inquiry::IN_PROCESS)
-                            <span class="badge-show in_process">В процессе</span>
+                            <span class="badge-show in_process">В работе</span>
                             @break
                         @case($inquiry->status === $inquiry::ARCHIVED)
                             <span class="badge-show archived">Архив</span>
