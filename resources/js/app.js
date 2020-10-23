@@ -1,22 +1,3 @@
-window.filterInquiries = function () {
-    const params = {
-        season: $('.inquiries:checked').val(),
-    }
-
-    var queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
-}
-
-
-window.radioFilter = function (item, val) {
-    const parent = $(item).closest('.inquiries-list');
-    $(parent).find('label').removeClass('active');
-    $(item).closest('label').addClass('active');
-    filterInquiries();
-}
-
-// $(document).ready(function () {
-//     filterInquiries();
-// })
 const new_products_field = `
 <div class="col-xs-12 col-sm-12 col-md-12 product_category">
    <div class="form-group">

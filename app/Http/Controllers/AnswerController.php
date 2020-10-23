@@ -54,10 +54,13 @@ class AnswerController extends Controller
         $answer = new Answer($input);
 
         $inquiry->answers()->save($answer);
+
+        $productId = $request->product_id;
+        $quantity = $request->quantity;
         ProductAnswer::updateOrCreate([
-            'product_id' => $request->product_id,
+            'product_id' => $productId,
             'answer_id' => $answer->id,
-            'quantity' => $request->quantity
+            'quantity' => $quantity
         ]);
 
         return redirect(route('inquiries.show', ['inquiry' => $inquiryId]))->with('success', 'Запрос создан.');
@@ -68,6 +71,16 @@ class AnswerController extends Controller
         $answer = Answer::findOrfail($answerId);
         $answer->delivery_status = Answer::DELIVERY_ASNWER_CONFIRMED;
         $answer->save();
+        
+        return back();
+        $peoductAnswerQuantity = ProductAnswer::find($answerId);
+        // $productQuantity = Product::find($productId);
+        // if ($quantity >= $productQuantity->quantity) {
+        //     $productQuantity->quantity = 0;
+        // } else {
+        //     $productQuantity->quantity = $productQuantity->quantity - $quantity;
+        // }
+        // $productQuantity->save(); // - этот код был в методе store
     }
 
     public function sentDelivery($answerId, Request $request)
