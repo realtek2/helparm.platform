@@ -31,7 +31,7 @@
             @if(isset($answer_fund_id) && $answer_fund_id == Auth::user()->fund_id)
                 @include('inquiry.product_answers.fund_answers')
             @else
-                @include('inquiry.product_answers.add_inquiry')
+                @include('inquiry.product_answers.add_answer')
             @endif
         @endif
         </div>

@@ -114,28 +114,29 @@ class MedicamentInquiryController extends Controller
         $answer_id = isset(Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id)
                      ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id
                      : null;
-
+        
+        $countSendedProducts = ProductAnswer::rightJoin('answers', 'product_answers.answer_id', '=', 'answers.id')
+                                            ->selectRaw('sum(quantity) as total')
+                                            ->where('delivery_status', Answer::DELIVERY_SENT)
+                                            ->first();
+       
+        $countDeliveredProducts = ProductAnswer::rightJoin('answers', 'product_answers.answer_id', '=', 'answers.id')
+                                                ->selectRaw('sum(quantity) as total')
+                                                ->where('delivery_status', Answer::DELIVERED)
+                                                ->first();
         return view(
             'inquiry.show',
             [
                 'inquiry' => $inquiry,
                 'funds' => Fund::all(),
                 'products' => Product::all(),
-                'answer_id' => isset(Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id)
-                                ? Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get()->first()->id
-                                : null,
+                'answer_id' => $answer_id,
                 'answer_fund_id' => isset(Answer::find($answer_id)->fund_id) ? Answer::find($answer_id)->fund_id : null,
                 'answers' => Answer::where('inquiry_id', $inquiry->id)->get(),
                 'fundAnswers' => Answer::where('inquiry_id', $inquiry->id)->where('fund_id', Auth::user()->fund_id)->get(),
                 'productAnswers' => ProductAnswer::where('answer_id', $answer_id)->with(['product'])->get(),
-                'countSendedProducts' => Answer::selectRaw('sum(quantity) as total')
-                                               ->where('inquiry_id', $inquiry->id)
-                                               ->where('delivery_status', Answer::DELIVERY_SENT)
-                                               ->first(),
-                'countDeliveredProducts' => Answer::selectRaw('sum(quantity) as total')
-                                                  ->where('inquiry_id', $inquiry->id)
-                                                  ->where('delivery_status', Answer::DELIVERED)
-                                                  ->first(),
+                'countSendedProducts' => $countSendedProducts,
+                'countDeliveredProducts' => $countDeliveredProducts,
             ]
         );
     }

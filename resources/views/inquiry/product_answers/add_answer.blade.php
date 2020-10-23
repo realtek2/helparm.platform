@@ -1,4 +1,3 @@
-
 <div class="row pl-4">
     <h4 class="mb-3"><strong>Ответить на запрос</strong></h4>
     <form action="{{ route('answer.store', ['inquiryId' => $inquiry->id]) }}" method="POST">

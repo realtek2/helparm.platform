@@ -40,7 +40,6 @@ class AnswerController extends Controller
     public function store(Request $request, $inquiryId)
     {
         $this->validate($request, [
-            'quantity' => 'required',
             'comment' => 'nullable',
             'delivery_period' => 'required'
         ]);
@@ -55,11 +54,10 @@ class AnswerController extends Controller
         $answer = new Answer($input);
 
         $inquiry->answers()->save($answer);
-
-        
         ProductAnswer::updateOrCreate([
             'product_id' => $request->product_id,
             'answer_id' => $answer->id,
+            'quantity' => $request->quantity
         ]);
 
         return redirect(route('inquiries.show', ['inquiry' => $inquiryId]))->with('success', 'Запрос создан.');

@@ -24,7 +24,7 @@ class CreateAnswersTable extends Migration
         });
       
         Schema::table('product_answers', function (Blueprint $table) {
-            $table->foreignId('answer_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('answer_id')->constrained()->after('product_id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

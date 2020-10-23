@@ -12,7 +12,6 @@ class Answer extends Model
         'fund_id',
         'comment',
         'delivery_period',
-        'quantity',
         'delivery_status',
         'delivery_sent_date',
         'date_of_receiving'

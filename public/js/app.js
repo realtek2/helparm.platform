@@ -111,6 +111,14 @@ window.radioFilter = function (item, val) {
 //     filterInquiries();
 // })
 
+
+var new_products_field = "\n<div class=\"col-xs-12 col-sm-12 col-md-12 product_category\">\n   <div class=\"form-group\">\n       <label>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u043E\u0432\u0430\u0440 \u0441\u043E \u0441\u043A\u043B\u0430\u0434\u0430:*</label>\n       <select class=\"custom-select\" required name=\"product_id[]\">\n           <option selected disabled>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u043E\u0432\u0430\u0440</option>\n           @foreach ($products as $product)\n               @if($product->fund_id == Auth::user()->fund_id )\n                   <option value=\"{{ $product->id }}\">{{ $product->name }}</option>\n               @endif\n           @endforeach\n       </select>\n   </div>\n</div>\n<div class=\"col-xs-12 col-sm-12 col-md-12 product_quantity\">\n   <div class=\"form-group\">\n       <label>\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0448\u0442.*</label>\n       <input type=\"text\" name=\"quantity\" class=\"form-control\" required placeholder=\"\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\">\n   </div>\n</div>\n";
+
+window.addProduct = function () {
+  $('.new_products_fields').show();
+  $('.new_products_fields').append(new_products_field);
+};
+
 /***/ }),
 
 /***/ "./resources/sass/app.scss":

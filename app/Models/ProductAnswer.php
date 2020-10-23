@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductAnswer extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = [
-        'name',
-        'quantity',
-        'comment',
-        'delivery_period',
         'answer_id',
-        'product_id'
+        'product_id',
+        'quantity'
     ];
 
     public function answer()
