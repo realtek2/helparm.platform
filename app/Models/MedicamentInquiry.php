@@ -36,12 +36,12 @@ class MedicamentInquiry extends Model
     
     public function fund()
     {
-        return $this->belongsTo(Fund::class);
+        return $this->belongsTo(Fund::class)->withTrashed();
     }
 
     public function createdByFund()
     {
-        return $this->belongsTo(Fund::class, 'created_by_fund', 'id');
+        return $this->belongsTo(Fund::class, 'created_by_fund', 'id')->withTrashed();
     }
     
     public function answers()
