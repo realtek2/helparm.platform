@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
     {
         $products = [
             [
-                'name' => 'Бинты',
+                'name_id' => 1,
                 'fund_id' => 1,
                 'category_id' => 1,
                 'quantity' => 100,
@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                 'free' => 100,
             ],
             [
-                'name' => 'Шприцы',
+                'name_id' => 2,
                 'fund_id' => 1,
                 'category_id' => 1,
                 'quantity' => 500,
@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
                 'free' => 500,
             ],
             [
-                'name' => 'Вода',
+                'name_id' => 3,
                 'fund_id' => 1,
                 'category_id' => 2,
                 'quantity' => 250,
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
                 'free' => 250,
             ],
             [
-                'name' => 'Амоксиклав',
+                'name_id' => 4,
                 'fund_id' => 3,
                 'category_id' => 1,
                 'quantity' => 100,
@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
                 'free' => 100,
             ],
             [
-                'name' => 'Бинт марлевый',
+                'name_id' => 5,
                 'fund_id' => 3,
                 'category_id' => 1,
                 'quantity' => 500,
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
                 'free' => 500,
             ],
             [
-                'name' => 'Гель для рук',
+                'name_id' => 6,
                 'fund_id' => 3,
                 'category_id' => 2,
                 'quantity' => 250,
@@ -62,7 +62,7 @@ class ProductSeeder extends Seeder
                 'free' => 250,
             ],
             [
-                'name' => 'Амоксиклав',
+                'name_id' => 4,
                 'fund_id' => 2,
                 'category_id' => 1,
                 'quantity' => 100,
@@ -70,7 +70,7 @@ class ProductSeeder extends Seeder
                 'free' => 100,
             ],
             [
-                'name' => 'Бинт марлевый',
+                'name_id' => 5,
                 'fund_id' => 2,
                 'category_id' => 1,
                 'quantity' => 500,
@@ -78,7 +78,7 @@ class ProductSeeder extends Seeder
                 'free' => 500,
             ],
             [
-                'name' => 'Гель для рук',
+                'name_id' => 6,
                 'fund_id' => 2,
                 'category_id' => 2,
                 'quantity' => 250,

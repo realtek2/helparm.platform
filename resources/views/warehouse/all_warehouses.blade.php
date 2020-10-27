@@ -47,7 +47,7 @@
             <tr>
                 <td><strong>{{ $product->is_urgent }}</strong></td>
                 <td><strong>{{ $product->id }}</strong></td>
-                <td class="product-name">{{ $product->name }}</td>
+                <td class="product-name">{{ $product->nomenclature->name }}</td>
                 <td class="p-text-color">{{ $product->medicamentsCategory->name }}</td>
                 <td class="pb-0"><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color mt-n1">{{ $product->fund->country }} | {{ $product->fund->city }}</p></td>
                 <td><strong>{{ $product->unit }}.</strong></td>
@@ -110,7 +110,7 @@
             columns: [
                 {data: 'is_urgent'},
                 {data: 'id'},
-                {data: 'name', className: 'product-name underlined'},
+                {data: 'name_id', className: 'product-name underlined'},
                 {data: 'category_id', className: 'p-text-color'},
                 {data: 'fund_id'},
                 {data: 'unit', className: "font-weight-bold"},

@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/warehouses', 'ProductController@index')->name('warehouses.index');
             Route::get('/warehouses/create', 'ProductController@createView')->name('warehouses.create');
             Route::get('/answers', 'AnswerController@index')->name('answers.index');
+            Route::resource('nomenclatures', 'NomenclatureController', ['except' => ['show']]);
         });
     });
 

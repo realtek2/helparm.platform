@@ -48,6 +48,9 @@ class ProductController extends Controller
                              return view('warehouse.buttons.not_urgent')
                              ->render();
                          })
+                         ->editColumn('name_id', function ($products) {
+                             return $products->nomenclature->name;
+                         })
                          ->editColumn('category_id', function ($products) {
                              return $products->medicamentsCategory->name;
                          })
@@ -84,6 +87,9 @@ class ProductController extends Controller
                          ->editColumn('is_urgent', function () {
                              return view('warehouse.buttons.not_urgent')
                              ->render();
+                         })
+                         ->editColumn('name_id', function ($products) {
+                             return $products->nomenclature->name;
                          })
                          ->editColumn('category_id', function ($products) {
                              return $products->medicamentsCategory->name;

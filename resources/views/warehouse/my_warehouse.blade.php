@@ -99,7 +99,7 @@
             columns: [
                 {data: 'is_urgent'},
                 {data: 'id'},
-                {data: 'name', className: 'product-name underlined'},
+                {data: 'name_id', className: 'product-name underlined'},
                 {data: 'category_id', className: 'p-text-color'},
                 {data: 'unit', className: "font-weight-bold"},
                 {data: 'quantity', className: "font-weight-bold"},

@@ -48,6 +48,11 @@ class Product extends Model
         return $this->hasOne(ProductAnswer::class);
     }
 
+    public function nomenclature()
+    {
+        return $this->belongsTo(Nomenclature::class, 'name_id', 'id');
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         $filter->apply($builder);

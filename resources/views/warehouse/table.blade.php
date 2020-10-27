@@ -10,7 +10,7 @@
     @foreach ($products as $product)
     <tr>
         <td><strong>{{ $product->id }}</strong></td>
-        <td class="p-text-color">{{ $product->name }}</td>
+        <td class="p-text-color">{{ $product->nomenclature->name }}</td>
         <td><strong>{{ $product->fund->name ?? '-'}}</strong><p class="p-text-color">{{ $product->fund->country }} |  {{ $product->fund->city }}</p></td>
         <td><strong>{{ $product->medicamentsCategory->name }}</strong></td>
         <td><strong>{{ $product->quantity }} шт.</strong></td>

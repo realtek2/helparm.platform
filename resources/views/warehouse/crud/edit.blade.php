@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Имя:</strong>
-                    <input type="text" name="name" class="form-control" required value="{{ $product->name }}">
+                    <input type="text" name="name" class="form-control" required value="{{ $product->nomenclature->name }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6">
