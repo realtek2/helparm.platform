@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Filters\ProductFilter;
 use App\Models\MedicamentsCategory;
+use App\Models\Nomenclature;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -117,8 +118,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = MedicamentsCategory::all();
+        $nomenclatures = Nomenclature::all();
         
-        return view('warehouse.crud.create_modal', compact('categories'));
+        return view('warehouse.crud.create_modal', compact('categories', 'nomenclatures'));
     }
 
     public function createView()

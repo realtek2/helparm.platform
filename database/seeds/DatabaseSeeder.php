@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(InquirySeeder::class);
         $this->call(NomenclatureSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(ProductsForVivaFundSeeder::class);
     }
 }

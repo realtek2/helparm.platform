@@ -16,11 +16,12 @@ class CreateNomenclaturesTable extends Migration
         Schema::create('nomenclatures', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->softDeletes();
         });
         Schema::table('products', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->unsignedBigInteger('name_id');
-            $table->foreign('name_id')->references('id')->on('nomenclatures')->after('category_id')->nullable();
+            $table->foreign('name_id')->references('id')->on('nomenclatures')->after('fund_id')->nullable();
         });
     }
 
@@ -33,7 +34,8 @@ class CreateNomenclaturesTable extends Migration
     {
         Schema::dropIfExists('nomenclatures');
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign('name_id');
+            $table->dropForeign(['name_id']);
+            $table->dropColumn('name_id');
             $table->string('name');
         });
     }

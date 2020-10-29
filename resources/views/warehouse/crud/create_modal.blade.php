@@ -13,9 +13,21 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <label>Наименование:</label>
-                    <input type="text" name="name" class="form-control" required placeholder="Наименование">
+                    <select class="custom-select" required name="name_id">
+                        <option selected disabled>Выберите категорию</option>
+                        @foreach ($nomenclatures as $nomenclature)
+                            <option value="{{ $nomenclature->id }}">{{ $nomenclature->name }}</option>
+                        @endforeach
+                      </select>
                 </div>
+                {{-- <div class="form-group">
+                    <label for="single-default">Наименование</label>
+                    <select multiple="multiple" class="select2 custom-select" name="nomenclatures[][name]" id="single-default">
+                        @foreach ($nomenclatures as $nomenclature)
+                        <option value="{{ $nomenclature->id }}">{{ $nomenclature->name }}</option>
+                    @endforeach
+                    </select>
+                </div> --}}
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -54,6 +66,14 @@
 @section('custom_script')
     <script>
         $(document).ready(function(){
+            $('.select2').select2(
+                {
+                    tags: true,
+                    multiple: true,
+                    tokenSeparators: [','],
+                    sorter: data => data.sort((a, b) => a.text.localeCompare(b.text))
+                }
+            );
             $(document).on('click', '.class', function(){
                 $.ajax({
                     url: {{ route('products.store') }},
